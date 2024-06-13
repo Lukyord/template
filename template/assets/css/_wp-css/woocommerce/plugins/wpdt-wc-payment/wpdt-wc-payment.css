@@ -1,0 +1,195 @@
+@charset "utf-8";
+/* CSS Document */
+
+.form-wpdt-wc-payment table.shop_table th,
+.form-wpdt-wc-payment table.shop_table td{
+	border:none;
+}
+.form-wpdt-wc-payment .thead{ width:25%; text-align:right; vertical-align:middle; padding-right:10px;}
+
+.form-wpdt-wc-payment table{ margin-bottom:1em; width: 100%; }
+.form-wpdt-wc-payment input{ width:auto!important;}
+.form-wpdt-wc-payment input.text{ padding:3px 10px; border:#ccc solid 1px; max-width: 220px; width: auto;}
+
+.form-wpdt-wc-payment input.small-text{ max-width: 96px; }
+.form-wpdt-wc-payment select{ margin-bottom: 0; padding: 3px 10px; border: #ccc solid 1px; height: 34px; }
+.form-wpdt-wc-payment textarea{ margin-bottom:10px; border:#ccc solid 1px;}
+.form-wpdt-wc-payment img{ vertical-align: middle; max-width: 100%; height: auto; }
+.form-wpdt-wc-payment input[type="file"]{ width: 218px; display: inline; }
+
+.form-wpdt-wc-payment .payment-date-time .inline{ display: inline-grid;  }
+.form-wpdt-wc-payment .payment-date-time .inline small{ display: block; }
+
+.wpdt-wc-payment-table-banks .wpdt_wc_payment_form_bank_info label{ display: block; padding:0; margin:0; cursor: pointer; }
+.wpdt-wc-payment-table-banks .wpdt_wc_payment_form_bank_name{ color:#0066FF; display:block; }
+.wpdt-wc-payment-table-banks .wpdt_wc_payment_form_bank_branch{ display: block; font-size: 0.8em; line-height: 1em; }
+.wpdt-wc-payment-table-banks .wpdt_wc_payment_form_account_name{ color: green; }
+.wpdt-wc-payment-table-banks .wpdt_wc_payment_form_account_number{ color:red;}
+
+.form-wpdt-wc-payment .error{ border:red solid 1px!;}
+.form-wpdt-wc-payment label.error{ display:none!;}
+.form-wpdt-wc-payment span.required{ color:red;}
+.form-wpdt-wc-payment .reset{ background-color: none; border:none; }
+
+
+.wpdt-wc-payment-thankyou{
+	background: #fef8e4;
+    padding:1em 1em 1px;
+    margin-bottom: 20px;
+    border-radius: 2px;
+}
+.link-paymnet .button{
+	padding: 1em;
+    display: block;
+    text-align: center;
+}
+
+.wpdt-wc-payment-table tr td{
+	padding: 0.5em;
+}
+
+.wpdt-wc-payment-table-banks td{ vertical-align: middle; }
+.wpdt-wc-payment-table-banks td.text-center{ text-align: center; }
+.wpdt-wc-payment-table-banks td img{
+	display: inline-block;
+	margin-bottom: 0
+}
+
+.wpdt-wc-payment-table-banks .thead{ text-align: center; }
+
+.payment-info-accounts table.shop_table th{ border-bottom: 1px solid rgba(0,0,0,.1);  }
+.payment-info-accounts table.shop_table td{ border-bottom: 1px solid rgba(0,0,0,.1);  }
+.payment-info-accounts table.shop_table tr:last-child th,
+.payment-info-accounts table.shop_table tr:last-child td{
+	border-bottom: none;
+}
+
+
+
+@media (max-width: 767px) {
+	
+	.form-wpdt-wc-payment table{
+		border: 1px solid #F1F1F0;
+	}
+	
+	.wpdt-wc-payment-table tr th,
+	.wpdt-wc-payment-table tr td{
+		border-right: 1px solid #F1F1F0;
+		border-bottom: 1px solid #F1F1F0;
+	}
+
+	.form-wpdt-wc-payment.shop_table table {
+		margin-bottom: 1em;
+		width: 100%;
+		border: 1px solid #F1F1F0;
+	}
+	
+	.wpdt-wc-payment-table.shop_table tr th{
+		background-color: #f8f8f8;
+	}
+
+	.wpdt-wc-payment-table.shop_table tr th,
+	.wpdt-wc-payment-table.shop_table tr td{
+		border-top: 1px solid #F1F1F0;
+		border-bottom:1px solid #F1F1F0;
+		border-right:1px solid #F1F1F0;
+		border-right:1px solid #F1F1F0;
+	}
+
+	.form-wpdt-wc-payment.shop_table .thead{
+		width: 28%;
+		line-height: 1em;
+		font-weight: normal;
+		font-size: 13px;
+		background-color: #f8f8f8;
+		border-bottom: 1px solid #F1F1F0
+	}
+	
+	#wpdt_wc_payment_form_time{ width:100px;}
+	#wpdt_wc_payment_form_amount{ width:100px;}
+
+	#wpdt_wc_payment_form_c_name,
+	#wpdt_wc_payment_form_c_tel,
+	#wpdt_wc_payment_form_c_email,
+	#wpdt_wc_payment_form_ref_id,
+	#wpdt_wc_payment_form_p_type{ 
+		width: 94%; 
+	}
+
+	.form-wpdt-wc-payment input[type="file"] {
+		width: 180px;
+	}
+
+	.wpdt-wc-payment-table.shop_table tr td{
+		border-right:none;
+	}
+
+	.wpdt-wc-payment-table.wpdt-wc-payment-table-banks.shop_table tr thead{
+		display: none;
+	}
+	.wpdt-wc-payment-table.wpdt-wc-payment-table-banks.shop_table tr td{
+		padding: 0 0 0 25%;
+		text-align: left;
+		line-height: 1em;
+		border:none;
+	}
+	.wpdt-wc-payment-table.wpdt-wc-payment-table-banks.shop_table thead{ display: none; }
+	.wpdt-wc-payment-table.wpdt-wc-payment-table-banks.shop_table tr{position: relative; display: block;}
+	.wpdt-wc-payment-table.wpdt-wc-payment-table-banks.shop_table td{ display: block;  border: none; padding:0;  }
+	.wpdt-wc-payment-table.wpdt-wc-payment-table-banks.shop_table td:first-child{ padding-top: 0px; padding-left: 10px; }
+	.wpdt-wc-payment-table.wpdt-wc-payment-table-banks.shop_table td:nth-child(2){ padding-top: 10px;  border-top: #f1f1f1 solid 1px; margin-top: -1px;  }
+	.wpdt-wc-payment-table.wpdt-wc-payment-table-banks.shop_table td:last-child{ border-bottom: #f1f1f1 solid 1px; padding-bottom: 10px;}
+	.wpdt-wc-payment-table.wpdt-wc-payment-table-banks.shop_table .thead{
+		position: absolute;
+		display: block;
+		width: 25%;
+		left: 0px;
+		top: 50%;
+		margin-top: -20px;
+		line-height: 30px;
+		padding: 0;
+	}
+	.wpdt-wc-payment-table.wpdt-wc-payment-table-banks.shop_table .thead label{
+		width: 100%;
+		text-align: center;
+	}
+	.wpdt-wc-payment-table-banks .wpdt_wc_payment_form_bank_name{ display: inline; }
+	.wpdt-wc-payment-table-banks .wpdt_wc_payment_form_bank_branch{ display: inline; }
+
+	.wpdt-wc-payment-table.wpdt-wc-payment-table-payment-info tr.amount td{
+		padding-bottom: 10px;
+	}
+	.form-wpdt-wc-payment .payment-date-time .inline{ margin-bottom: 10px; }
+	.form-wpdt-wc-payment .payment-date-time .form-control{ width: auto; padding-left: 10px; padding-right: 10px;}
+	.wpdt-wc-payment-table.wpdt-wc-payment-table-payment-info tr.uploadslip td{
+		padding:10px 5px;
+		background-color: #f8f8f8;
+	}
+
+	.woocommerce table.shop_table{
+		border-bottom: none;
+	}
+
+	.wpdt-wc-payment-table.wpdt-wc-payment-table-banks.shop_table td:first-child{
+		background-color: transparent;;
+	}
+	
+}
+
+
+@media (max-width: 320px) { 
+
+	.form-wpdt-wc-payment tr td{ padding:5px 0; }
+	
+	#wpdt_wc_payment_form_c_name{ width:160px;}
+	#wpdt_wc_payment_form_c_tel{ width:160px;}
+	#wpdt_wc_payment_form_c_email{ width:160px;}
+	#wpdt_wc_payment_form_ref_id{ width:160px;}
+	#wpdt_wc_payment_form_p_type{ width:160px;}
+	#wpdt_wc_payment_form_t_day{ width:46px;}
+	#wpdt_wc_payment_form_t_mount{ width:100px;}
+	#wpdt_wc_payment_form_t_year{ width:46px;}
+	#wpdt_wc_payment_form_time{ width:100px;}
+	#wpdt_wc_payment_form_amount{ width:100px;}
+	
+}
