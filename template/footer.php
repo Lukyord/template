@@ -25,6 +25,10 @@
 <script src="<?php echo $root; ?>assets/plugin/countup/jquery.waypoints.min.js"></script>
 <script src="<?php echo $root; ?>assets/plugin/countup/jquery.countup.min.js"></script>
 <script src="<?php echo $root; ?>assets/plugin/rellax/rellax.min.js"></script>
+<script src="<?php echo $root; ?>assets/plugin/lenis/lenis.min.js"></script>
+<script src="<?php echo $root; ?>assets/plugin/splitting/splitting.min.js"></script>
+
+
 <!-- JS:CONFIG -->
 <script src="<?php echo $root; ?>assets/js/theme.js?v=<?php echo time(); ?>"></script>
 <script src="<?php echo $root; ?>assets/js/theme-wp.js?v=<?php echo time(); ?>"></script>
