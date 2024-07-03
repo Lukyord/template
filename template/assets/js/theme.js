@@ -1,12 +1,12 @@
 /* PAGE LOAD */
 jQuery(function ($) {
-  $("#page").imagesLoaded(function () {
-    $(
-      ".entry-content .wp-block-image:not(.alignfull):not(.alignwide) > img, table img"
-    ).each(function () {
-      $(this).css("width", $(this).attr("width"));
-    });
-  });
+  // ANIMATE
+  $(
+    ".entry-fadeIn > *:not(ul, ol, .wp-block-gallery, .wp-block-columns), .entry-fadeIn li"
+  ).addClass("animate fadeIn");
+  $(
+    ".entry-fadeIn *:is(.wp-block-gallery, .wp-block-column, .wp-block-quote) > *, *:is(.wp-block-column) li"
+  ).addClass("animate fadeIn");
 
   $(".accordion .animate").each(function () {
     $(this).removeClass("animate fadeIn");
@@ -492,10 +492,33 @@ jQuery(function ($) {
 /* VENDOR */
 jQuery(function ($) {
   //RELLAX
+  // if ($(".rellax").length) {
+  //   new Rellax(".rellax", {
+  //     center: true,
+  //     speed: -1,
+  //   });
+  // }
 
   //COUNTUP
+  // if ($(".countup").length) {
+  //   $(".countup").countUp({
+  //     delay: 150,
+  //     time: 1500,
+  //   });
+  // }
 
   //LIMARQUEE
+  // if ($('*[data-js="liMarquee"]').length) {
+  //   $('*[data-js="liMarquee"]:visible').each(function () {
+  //     if ($(this).find('> *[class*="-marquee"] > *').length > 1) {
+  //       $(this).liMarquee({
+  //         circular: true,
+  //         startShow: true,
+  //         scrollStop: false,
+  //       });
+  //     }
+  //   });
+  // }
 
   //SWIPER (DEFAULT)
   if ($(".swiper.default").length) {
@@ -868,6 +891,23 @@ jQuery(function ($) {
   }
 
   //POPUP
+  // $(".open-popup-modal").magnificPopup({
+  //   type: "inline",
+  //   preloader: false,
+  //   closeOnBgClick: true,
+  //   mainClass: "popup-style popup-style-modal",
+  //   showCloseBtn: true,
+  //   closeBtnInside: true,
+  //   removalDelay: 300,
+  //   callbacks: {
+  //     open: function () {
+  //       $("html").addClass("plugin-mfp-enabled");
+  //     },
+  //     close: function () {
+  //       $("html").removeClass("plugin-mfp-enabled");
+  //     },
+  //   },
+  // });
 });
 
 /* VIDEO */
@@ -937,3 +977,29 @@ jQuery(function ($) {
   if ($("#main").length) {
   }
 });
+
+// EFFECT
+
+// ===== LENIS =====
+// const lenis = new Lenis();
+
+// lenis.on("scroll", (e) => {});
+
+// function raf(time) {
+//   lenis.raf(time);
+//   requestAnimationFrame(raf);
+// }
+
+// requestAnimationFrame(raf);
+
+// ===== GSAP =====
+// let panels = gsap.utils.toArray(".gsap-panel");
+
+// panels.forEach((panel) => {
+//   ScrollTrigger.create({
+//     trigger: panel,
+//     start: "top top",
+//     pin: true,
+//     pinSpacing: false,
+//   });
+// });

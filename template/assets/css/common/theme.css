@@ -3,20 +3,20 @@
   --color-black-rgb: 0, 0, 0;
   --color-white: #ffffff;
   --color-white-rgb: 255, 255, 255;
-  --color-gray: var(--color-middark);
-  --color-gray-rgb: var(--color-middark);
+  --color-gray: #888888;
+  --color-gray-rgb: 136, 136, 136;
   --color-red: #ff0000;
   --color-red-rgb: 255, 0, 0;
-  --color-active: var(--color-tree);
+  --color-active: var(--color-red);
 
-  --color-body: var(--color-middark);
-  --color-body-rgb: var(--color-middark-rgb);
+  --color-body: var(--color-black);
+  --color-body-rgb: var(--color-black-rgb);
   --color-body-couple: var(--color-white);
   --color-body-couple-rgb: var(--color-white-rgb);
-  --color-theme: var(--color-anchan);
-  --color-theme-rgb: var(--color-anchan-rgb);
-  --color-theme-couple: var(--color-sand);
-  --color-theme-couple-rgb: var(--color-sand-rgb);
+  --color-theme: var(--color-red);
+  --color-theme-rgb: var(--color-red-rgb);
+  --color-theme-couple: var(--color-gray);
+  --color-theme-couple-rgb: var(--color-gray-rgb);
 
   --filter-black: brightness(0);
   --filter-white: brightness(0) invert(1);
@@ -65,21 +65,52 @@
 
   --letter-spacing: 0.45px;
 
+  --text-shadow-black: 0 0 0.65px var(--color-black),
+    0 0 0.65px var(--color-black);
+  --text-shadow-black-light: 0 0 0.42px var(--color-black),
+    0 0 0.42px var(--color-black);
+  --text-shadow-white: 0 0 1px var(--color-white), 0 0 1px var(--color-white);
+  --text-shadow-white: 0 0 0.7px var(--color-white),
+    0 0 0.7px var(--color-white);
+
   --icon-size: 20px;
   --icon-size-lg: 26px;
   --icon-size-xl: 32px;
 
-  --spacing-3xl: 100px;
-  --spacing-2xl: 80px;
-  --spacing-xl: 60px;
-  --spacing-lg: 40px;
+  --spacing-6xl: 160px;
+  --spacing-6xl-minus: -160px;
+  --spacing-5xl: 120px;
+  --spacing-5xl-minus: -120px;
+  --spacing-4xl: 100px;
+  --spacing-4xl-minus: -100px;
+  --spacing-3xl: 80px;
+  --spacing-3xl-minus: -80px;
+  --spacing-2xl: 60px;
+  --spacing-2xl-minus: -60px;
+  --spacing-xl: 40px;
+  --spacing-xl-minus: -40px;
+  --spacing-lg: 36px;
+  --spacing-lg-minus: -36px;
   --spacing-md: 30px;
-  --spacing-sm: 20px;
-  --spacing-xs: 12px;
-  --spacing-2xs: 8px;
-  --spacing-3xs: 5px;
+  --spacing-md-minus: -30px;
+  --spacing-sm: 24px;
+  --spacing-sm-minus: -24px;
+  --spacing-xs: 20px;
+  --spacing-xs-minus: -20px;
+  --spacing-2xs: 16px;
+  --spacing-2xs-minus: -16px;
+  --spacing-3xs: 12px;
+  --spacing-3xs-minus: -12px;
+  --spacing-4xs: 10px;
+  --spacing-4xs-minus: -10px;
+  --spacing-5xs: 8px;
+  --spacing-5xs-minus: -8px;
+  --spacing-6xs: 6px;
+  --spacing-6xs-minus: -6px;
 
-  --spacing-container: var(--spacing-sm);
+  --spacing-container: 0px;
+  --spacing-x: 0px;
+  --spacing-y: 0px;
 
   --logo-height: 36px;
   --header-height: 56px;
@@ -87,7 +118,7 @@
 
   --border-width: 1px;
   --border-style: solid;
-  --border-color: var(--color-beach);
+  --border-color: var(--color-gray);
   --border: var(--border-width) var(--border-style) var(--border-color);
 
   --input-height: 40px;
@@ -109,7 +140,7 @@
   --duration: 0.3s;
   --duration-x2: 0.5s;
   --duration-x3: 1.5s;
-  --timing-function: ease;
+  --timing-function: ease-in-out;
   --cta-shadow: 0 -1px 0px 0px inset;
 
   --vh: 1vh;
@@ -117,6 +148,10 @@
   --lvh: calc(var(--vh, 1vh) * 100);
   --lvh-flexible: calc(var(--dvh, 1vh) * 100);
   --lvh-fallback: 100vh;
+
+  --svh: calc((var(--vh, 1vh) * 100) - var(--header-height));
+  --svh-flexible: calc((var(--dvh, 1vh) * 100) - var(--header-height));
+  --svh-fallback: calc(100vh - var(--header-height));
 }
 
 @supports (-webkit-touch-callout: none) {
@@ -512,9 +547,9 @@ html {
 body {
   margin: 0;
   position: relative;
-  min-height: 100vh;
+  min-height: 100svh;
   overflow-x: hidden;
-  background: var(--color-body-couple);
+  background: var(--color-white);
   color: var(--color-body);
   -webkit-animation-name: pageAnimation;
   animation-name: pageAnimation;
@@ -544,6 +579,7 @@ body {
     opacity: 1;
   }
 }
+
 h1,
 h2,
 h3,
@@ -703,6 +739,30 @@ strong {
 }
 .weight-black {
   font-weight: var(--font-weight-black) !important;
+}
+
+*:is(.black-text-hover, .white-text-hover, .underline-hover) {
+  transition: var(--duration) var(--timing-function);
+}
+
+.black-text-shadow-hover:hover {
+  text-shadow: var(--text-shadow-black);
+}
+
+.black-light-text-shadow-hover:hover {
+  text-shadow: var(--text-shadow-black-light);
+}
+
+.white-text-shadow-hover:hover {
+  text-shadow: var(--text-shadow-white);
+}
+
+.white-light-text-shadow-hover:hover {
+  text-shadow: var(--text-shadow-white-light);
+}
+
+.underline-hover:hover {
+  text-decoration: underline;
 }
 
 .size-3xs {
@@ -1350,14 +1410,6 @@ a:hover {
 }
 .entry-content table > *:first-child > tr:first-child > * {
   padding-top: 0;
-}
-
-.entry-anchan {
-  line-height: 1;
-}
-.entry-anchan .ic {
-  font-size: var(--font-size-h2);
-  vertical-align: top;
 }
 
 .entry-contact > *:not(:first-child) {
@@ -2181,11 +2233,6 @@ img.mfp-img {
 }
 
 .popup-ctrl {
-  font-size: 0;
-  line-height: 0;
-  position: fixed;
-  z-index: -99999;
-  top: 100%;
 }
 
 .popup-style-modal .modal-dismiss {
@@ -2956,8 +3003,6 @@ img.mfp-img {
   grid-gap: var(--gap-y) var(--gap-x);
 }
 
-/* PAGE:INDEX */
-
 /*ANIMATE====================*/
 .animate {
   -webkit-animation-duration: var(--duration-x3);
@@ -2993,6 +3038,62 @@ img.mfp-img {
 }
 .fadeInUp {
   transition: all 0.8s 0s ease;
+}
+
+.fadeInUp {
+  transition: all 0.8s 0s ease;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: scale(1, 1) translate(-20px, 0%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1, 1) translate(0%, 0%);
+  }
+}
+
+@-webkit-keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: scale(1, 1) translate(-20px, 0%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1, 1) translate(0%, 0%);
+  }
+}
+
+.fadeInLeft {
+  transition: var(--duration) var(--timing-function);
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: scale(1, 1) translate(20px, 0%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1, 1) translate(0%, 0%);
+  }
+}
+
+@-webkit-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: scale(1, 1) translate(20px, 0%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1, 1) translate(0%, 0%);
+  }
+}
+
+.fadeInRight {
+  transition: var(--duration) var(--timing-function);
 }
 
 @-webkit-keyframes matrixZoomOut {
@@ -3082,15 +3183,15 @@ html.touchevents a {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--spacing-container);
+  padding: var(--spacing-md);
   width: 100%;
   height: 100%;
   position: fixed;
   z-index: 999999;
   top: 0;
   left: 0;
-  background: var(--color-body-couple);
-  color: var(--color-body);
+  background: var(--color-white);
+  color: var(--color-black);
   will-change: opacity;
   opacity: 0;
   pointer-events: none;

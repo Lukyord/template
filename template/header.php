@@ -53,10 +53,14 @@ $page_index = ($page == basename(dirname($_SERVER['PHP_SELF']), "/") || $page ==
     <!-- web by ::* www.plaimanas.com -->
 </head>
 
+<?php /* echo (in_array($page, ['about.php', 'career.php', 'news-single.php', 'career-apply-form.php', "page.php"])) ? 'no-scrollbar' : '';  */ ?>
+
 <body>
-    <div id="page">
+    <div id="page" class="<?php if ($page == '404.php') {
+                                echo 'error-page';
+                            } ?>">
         <header id="header">
-            <div class="header-nav container">
+            <div class="header-nav">
 
 
 
