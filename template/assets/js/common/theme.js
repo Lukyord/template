@@ -21,6 +21,53 @@ jQuery(function ($) {
     pageAnimate();
 });
 
+{
+    /* <div class="image-banner blurred-media animate fadeIn">
+<div class="matrixZoomOut"></div>
+<img src="./assets/img/design/about1.png" alt="about image 1" loading="lazy">
+</div> */
+}
+// BLURRED UNLOADED IMAGES
+jQuery(function ($) {
+    if ($(".blurred-media").length) {
+        $(".blurred-media").each(function () {
+            const blurredImageDiv = $(this);
+            const media = blurredImageDiv.find("img, video");
+
+            if (media.length) {
+                function loaded() {
+                    blurredImageDiv.addClass("loaded");
+                    blurredImageDiv
+                        .children()
+                        .first()
+                        .addClass("animate")
+                        .css("visibility", "hidden");
+                    blurredImageDiv.scrollTop(blurredImageDiv.scrollTop() + 1);
+                }
+
+                media.each(function () {
+                    const element = $(this);
+                    if (element.is("img")) {
+                        if (this.complete) {
+                            loaded();
+                        } else {
+                            element.on("load", loaded);
+                        }
+                    }
+
+                    if (element.is("video")) {
+                        element.on("loadeddata", loaded);
+                    }
+                });
+            } else {
+                console.log(
+                    "No img or video element found inside .blurred-image"
+                );
+            }
+        });
+    }
+});
+
 /* WINDOW RESIZE */
 jQuery(function ($) {
     //BG IMAGE

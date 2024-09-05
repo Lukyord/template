@@ -1,3 +1,32 @@
+// THROTTLE ============================
+// usage -> document
+//     .querySelector(".work")
+//     .addEventListener("wheel", throttle(handleScroll, 1000));
+function throttle(func, limit) {
+    let inThrottle;
+    return function () {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => (inThrottle = false), limit);
+        }
+    };
+}
+
+// EXECUTE ON WIDTH RESIZE ============================
+// executeOnWidthResize(callback, 1000);
+function executeOnWidthResize(callback, delay = 0) {
+    var width = $(window).width();
+    $(window).resize(function () {
+        if ($(this).width() !== width) {
+            width = $(this).width();
+            setTimeout(callback, delay);
+        }
+    });
+}
+
 // CHECK IF IN VIEW ============================
 // var ratioInView = 1 / 2; 1/2 of the section is in view
 function checkIfInView(
