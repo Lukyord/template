@@ -37,12 +37,12 @@ jQuery(function ($) {
             if (media.length) {
                 function loaded() {
                     blurredImageDiv.addClass("loaded");
-                    blurredImageDiv
-                        .children()
-                        .first()
-                        .addClass("animate")
-                        .css("visibility", "hidden");
-                    blurredImageDiv.scrollTop(blurredImageDiv.scrollTop() + 1);
+                    // blurredImageDiv
+                    //     .children()
+                    //     .first()
+                    //     .addClass("animate")
+                    //     .css("visibility", "hidden");
+                    // blurredImageDiv.scrollTop(blurredImageDiv.scrollTop() + 1);
                 }
 
                 media.each(function () {

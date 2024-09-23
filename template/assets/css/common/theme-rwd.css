@@ -175,14 +175,6 @@
     .hidden-mobile-sm {
         display: none !important;
     }
-
-    :root {
-        --font-size-h5: 20px;
-        --font-size-h4: 24px;
-        --font-size-h3: 28px;
-        --font-size-h2: 32px;
-        --font-size-h1: 38px;
-    }
 }
 
 @media (max-width: 390px) {

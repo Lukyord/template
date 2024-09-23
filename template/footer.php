@@ -29,6 +29,10 @@
 <script src="<?php echo $root; ?>assets/plugin/splitting/splitting.min.js"></script>
 <script src="<?php echo $root; ?>assets/plugin/imagesLoaded/imagesLoaded.pkgd.min.js"></script>
 <script src="<?php echo $root; ?>assets/plugin/masonry/masonry.pkgd.min.js"></script>
+<script src="<?php echo $root; ?>assets/plugin/gsap/gsap.min.js"></script>
+<script src="<?php echo $root; ?>assets/plugin/gsap/ScrollTrigger.min.js"></script>
+<script src="<?php echo $root; ?>assets/plugin/gsap/ScrollToPlugin.min.js"></script>
+<script src="<?php echo $root; ?>assets/plugin/gsap/Flip.min.js"></script>
 
 <!-- JS:CONFIG -->
 <script src="<?php echo $root; ?>assets/js/common/theme.js?v=<?php echo time(); ?>"></script>

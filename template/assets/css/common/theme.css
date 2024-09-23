@@ -53,6 +53,7 @@
     --font-weight-light: 300;
     --font-weight-regular: 400;
     --font-weight-medium: 500;
+    --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --font-weight-black: 900;
     --font-weight-body: var(--font-weight-light);
@@ -112,6 +113,10 @@
     --spacing-x: 0px;
     --spacing-y: 0px;
 
+    --hamburger-width: 36px;
+    --hamburger-height: 2px;
+    --hamburger-gap: 8px;
+    --hamburger-background: var(--color-white);
     --logo-height: var(--36px);
     --header-height: var(--56px);
     --navi-height: 0px;
@@ -138,17 +143,6 @@
     --duration-x2: 0.5s;
     --duration-x3: 1.5s;
     --timing-function: ease-in-out;
-    --cta-shadow: 0 -1px 0px 0px inset;
-
-    --vh: 1vh;
-    --dvh: 1vh;
-    --lvh: calc(var(--vh, 1vh) * 100);
-    --lvh-flexible: calc(var(--dvh, 1vh) * 100);
-    --lvh-fallback: 100vh;
-
-    --svh: calc((var(--vh, 1vh) * 100) - var(--header-height));
-    --svh-flexible: calc((var(--dvh, 1vh) * 100) - var(--header-height));
-    --svh-fallback: calc(100vh - var(--header-height));
 }
 
 @supports (-webkit-touch-callout: none) {
@@ -901,6 +895,9 @@ strong {
 .weight-medium {
     font-weight: var(--font-weight-medium) !important;
 }
+.weight-semibold {
+    font-weight: var(--font-weight-semibold) !important;
+}
 .weight-bold {
     font-weight: var(--font-weight-bold) !important;
 }
@@ -1574,6 +1571,76 @@ a:hover {
     margin-top: var(--spacing-12);
 }
 
+/*HAMBURGER====================*/
+.hamburger {
+    position: relative;
+    display: block;
+    width: var(--hamburger-width);
+    height: var(--hamburger-width);
+}
+.hamburger .bars,
+.hamburger .bars:before,
+.hamburger .bars:after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: var(--hamburger-height);
+    background-color: var(--hamburger-background);
+    transition: var(--duration) var(--timing-function);
+}
+.hamburger .bars {
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition-property: background-color, height, transform;
+}
+.hamburger .bars:before,
+.hamburger .bars:after {
+    display: block;
+    content: "";
+}
+.hamburger .bars:before {
+    top: calc(var(--hamburger-gap) * -1);
+    transition-property: background-color, height, top;
+    transition-delay: 0s, 0s, 0.1s;
+}
+.hamburger .bars:after {
+    bottom: calc(var(--hamburger-gap) * -1);
+    transition-property: background-color, height, bottom, transform;
+    transition-delay: 0s, 0s, 0.1s, 0s;
+}
+
+.ctrl.active > .hamburger .bars {
+    transform: translateY(-50%) rotate(45deg);
+    transition-delay: 0s, 0s, 0.1s;
+    background-color: var(--color-pink);
+}
+.ctrl.active > .hamburger .bars:before {
+    top: 0;
+    opacity: 0;
+    background-color: var(--color-pink);
+}
+.ctrl.active > .hamburger .bars:after {
+    bottom: 0;
+    transform: rotate(-90deg);
+    transition-delay: 0s, 0s, 0s, 0.1s;
+    background-color: var(--color-pink);
+}
+
+html.page-scrolling .hamburger {
+    --hamburger-background: var(--color-pink);
+}
+
+.ctrl:is(:hover) > .hamburger {
+    --hamburger-background: var(--color-pink);
+}
+
+.ctrl.active:is(:hover) > .hamburger .bars {
+    --hamburger-background: var(--color-pink-active);
+}
+
 /*FORM====================*/
 *:is(input, textarea, select) {
     background: none;
@@ -1680,7 +1747,7 @@ textarea {
     margin: 0;
 }
 .select2-dropdown {
-    --color-active: var(--color-rock);
+    --color-active: var(--color-black);
     box-sizing: border-box;
     display: block;
     width: 100%;
@@ -2671,7 +2738,7 @@ img.mfp-img {
 /*FUNCTION:ACCORDION====================*/
 .accordion {
     --title-color: var(--color-black);
-    --title-color-active: var(--color-rock);
+    --title-color-active: var(--color-theme);
     --border-color: var(--color-black);
 }
 .accordion:not(:last-child) {
@@ -2825,7 +2892,7 @@ img.mfp-img {
 /*PAGE====================*/
 #page {
     display: grid;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: auto 1fr auto;
     min-height: 100svh;
 }
 

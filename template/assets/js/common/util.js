@@ -1,3 +1,38 @@
+// ON WINDOW RESIZE CALLBACK =============================
+function onWindowResize(callback, delay = 300) {
+    let lastWidth = $(window).width();
+    let resizeTimeout;
+
+    $(window).on("resize", function () {
+        const newWidth = $(window).width();
+
+        if (newWidth !== lastWidth) {
+            lastWidth = newWidth;
+
+            clearTimeout(resizeTimeout);
+
+            resizeTimeout = setTimeout(() => {
+                if (typeof callback === "function") {
+                    console.log("call");
+                    callback();
+                }
+            }, delay);
+        }
+    });
+}
+
+// Function to calculate the 'vw' value
+function calcVw(vw) {
+    return (vw / 100) * window.innerWidth;
+}
+
+// Function to calculate the 'rem' value
+function calcRem(rem) {
+    return (
+        rem * parseFloat(getComputedStyle(document.documentElement).fontSize)
+    );
+}
+
 // THROTTLE ============================
 // usage -> document
 //     .querySelector(".work")
