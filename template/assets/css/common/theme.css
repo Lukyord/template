@@ -1,5 +1,6 @@
 :root {
     --160px: 10rem;
+    --140px: 8.75rem;
     --120px: 7.5rem;
     --100px: 6.25rem;
     --80px: 5rem;
@@ -56,7 +57,7 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --font-weight-black: 900;
-    --font-weight-body: var(--font-weight-light);
+    --font-weight-body: var(--font-weight-regular);
 
     --font-size-h1: calc(1.14496672rem + 2.99500832vw);
     --font-size-h2: calc(-0.15534521rem + 2.67260579vw);
@@ -92,6 +93,7 @@
     --icon-size-32: var(--32px);
 
     --spacing-160: var(--160px);
+    --spacing-140: var(--140px);
     --spacing-120: var(--120px);
     --spacing-100: var(--100px);
     --spacing-80: var(--80px);
@@ -143,12 +145,6 @@
     --duration-x2: 0.5s;
     --duration-x3: 1.5s;
     --timing-function: ease-in-out;
-}
-
-@supports (-webkit-touch-callout: none) {
-    :root {
-        --lvh: var(--lvh-fallback);
-    }
 }
 
 /*FIX====================*/
@@ -1052,8 +1048,8 @@ a:hover {
     overflow: hidden;
     font-family: var(--font-heading);
     font-weight: var(--font-weight-regular);
-    font-size: var(--font-size-body);
-    line-height: var(--line-height-24);
+    font-size: var(--font-size-button);
+    line-height: var(--line-height-button);
     letter-spacing: var(--letter-spacing);
     text-transform: uppercase;
     text-align: center;

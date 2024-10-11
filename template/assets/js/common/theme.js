@@ -1291,6 +1291,43 @@ jQuery(function ($) {
     }
 });
 
+/* HEADER&FOOTER */
+jQuery(function ($) {
+    //MENU CONTROL
+    $(".header-menu-ctrl > .ctrl").click(function (e) {
+        e.preventDefault();
+        $("html").toggleClass("header-menu-enabled");
+        $("html, body").toggleClass("no-scroll");
+        $(".header-menu-ctrl > .ctrl").toggleClass("active");
+        $(".header-menu .panel-scroll").animate({ scrollTop: 0 });
+    });
+
+    // Function to close the header menu
+    function closeHeaderMenu() {
+        $("html").removeClass("header-menu-enabled");
+        $("html, body").toggleClass("no-scroll");
+        $(".header-menu-ctrl > .ctrl").removeClass("active");
+        $(".header-menu").removeClass("active");
+        setTimeout(function () {
+            $(".header-menu .panel-scroll").animate({ scrollTop: 0 });
+        }, 500);
+    }
+
+    $(".header-menu .link-scroll, .header-menu .panel-overlay").click(
+        function () {
+            closeHeaderMenu();
+        }
+    );
+
+    $(".header-menu").on(
+        "click",
+        ".link-scroll, .panel-overlay, a",
+        function () {
+            closeHeaderMenu();
+        }
+    );
+});
+
 // EFFECT
 
 // ===== LENIS =====

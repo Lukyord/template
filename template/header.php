@@ -8,10 +8,10 @@ $page_index = ($page == basename(dirname($_SERVER['PHP_SELF']), "/") || $page ==
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ANCHAN</title>
+    <title>TITLE</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <meta property="og:title" content="ANCHAN">
+    <meta property="og:title" content="TITLE">
     <meta property="og:image" content="<?php echo $root; ?>assets/img/og.jpg">
     <meta property="og:type" content="website">
 

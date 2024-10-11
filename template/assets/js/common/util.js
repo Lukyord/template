@@ -13,7 +13,6 @@ function onWindowResize(callback, delay = 300) {
 
             resizeTimeout = setTimeout(() => {
                 if (typeof callback === "function") {
-                    console.log("call");
                     callback();
                 }
             }, delay);
