@@ -1,22 +1,24 @@
 /*MEDIA QUERIES:MIN====================*/
 @media (min-width: 391px) {
+    .hidden-device-2xs {
+        display: none !important;
+    }
 }
 
 @media (min-width: 576px) {
+    .hidden-device-xs {
+        display: none !important;
+    }
 }
 
 @media (min-width: 768px) {
+    .hidden-device-sm {
+        display: none !important;
+    }
 }
 
 @media (min-width: 992px) {
     :root {
-        --icon-size-16: min(1.1111111111vw, var(--16px));
-        --icon-size-20: min(1.3888888889vw, var(--20px));
-        --icon-size-26: min(1.8055555556vw, var(--26px));
-        --icon-size-32: min(2.2222222222vw, var(--32px));
-        --icon-size-36: min(2.5vw, var(--36px));
-        --icon-size-40: min(2.7777777778vw, var(--40px));
-
         --container-spacing-x: min(3.3333333333vw, var(--48px));
         --logo-height: min(3.05555555556vw, var(--44px));
         --header-height: min(7.6388888889vw, var(--110px));
@@ -109,10 +111,10 @@
     /* SECTION */
 }
 
-@media (min-width: 1200px) {
-}
-
 @media (min-width: 1280px) {
+    .hidden-device-lg {
+        display: none !important;
+    }
 }
 
 @media (min-width: 1440px) {
@@ -132,28 +134,28 @@
         --line-height-description: 0.7;
         --line-height-button: 1.6428571429;
     }
+
+    .hidden-device-xl {
+        display: none !important;
+    }
 }
 
 /*MEDIA QUERIES:MAX====================*/
 @media (max-width: 1439px) {
-    :root {
-        --font-size-h1: calc(-1.4142539rem + 7.12694878vw);
+    .show-xl {
+        display: none !important;
     }
 }
 
 @media (max-width: 1279px) {
+    .show-lg {
+        display: none !important;
+    }
 }
 
 @media (max-width: 991px) {
-    :root {
-        --font-size-h1: calc(1.14496672rem + 2.99500832vw);
-    }
-
-    .hidden-device-sm {
+    .show-md {
         display: none !important;
-    }
-    .hidden-device-sm:first-child + *:not(:first-child) {
-        margin-top: 0 !important;
     }
     .overflow-hidden-device-sm {
         overflow: hidden !important;
@@ -185,7 +187,7 @@
 }
 
 @media (max-width: 767px) {
-    .hidden-mobile {
+    .show-sm {
         display: none !important;
     }
 
@@ -210,10 +212,13 @@
 }
 
 @media (max-width: 575px) {
-    .hidden-mobile-sm {
+    .show-xs {
         display: none !important;
     }
 }
 
 @media (max-width: 390px) {
+    .show-2xs {
+        display: none !important;
+    }
 }

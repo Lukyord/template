@@ -1,7 +1,11 @@
 // ON WINDOW RESIZE CALLBACK =============================
-function onWindowResize(callback, delay = 300) {
+function onWindowResize(callback, delay = 300, executeOnLoad = true) {
     let lastWidth = $(window).width();
     let resizeTimeout;
+
+    if (executeOnLoad && typeof callback === "function") {
+        callback();
+    }
 
     $(window).on("resize", function () {
         const newWidth = $(window).width();
@@ -47,18 +51,6 @@ function throttle(func, limit) {
             setTimeout(() => (inThrottle = false), limit);
         }
     };
-}
-
-// EXECUTE ON WIDTH RESIZE ============================
-// executeOnWidthResize(callback, 1000);
-function executeOnWidthResize(callback, delay = 0) {
-    var width = $(window).width();
-    $(window).resize(function () {
-        if ($(this).width() !== width) {
-            width = $(this).width();
-            setTimeout(callback, delay);
-        }
-    });
 }
 
 // CHECK IF IN VIEW ============================

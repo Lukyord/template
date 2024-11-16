@@ -22,11 +22,20 @@ jQuery(function ($) {
 });
 
 {
-    /* <div class="image-banner blurred-media animate fadeIn">
-<div class="matrixZoomOut"></div>
-<img src="./assets/img/design/about1.png" alt="about image 1" loading="lazy">
-</div> */
+    /* 
+    <picture class="object blurred-media">
+        <source media="(min-width:992px)" srcset="<?php echo $cover ?>">
+        <source media="(min-width:0px)" srcset="<?php echo $cover_m ?>">
+        <img
+            src="<?php echo $cover; ?>"
+            alt="Index Hero Image"
+            data-animation="matrixZoomOut"
+            class="inside-animation ease-out-cubic"
+            data-wow-duration="1s">
+    </picture> 
+*/
 }
+
 // BLURRED UNLOADED IMAGES
 jQuery(function ($) {
     if ($(".blurred-media").length) {
@@ -37,12 +46,14 @@ jQuery(function ($) {
             if (media.length) {
                 function loaded() {
                     blurredImageDiv.addClass("loaded");
-                    // blurredImageDiv
-                    //     .children()
-                    //     .first()
-                    //     .addClass("animate")
-                    //     .css("visibility", "hidden");
-                    // blurredImageDiv.scrollTop(blurredImageDiv.scrollTop() + 1);
+                    var insideAnimation =
+                        blurredImageDiv.find(".inside-animation");
+
+                    if (insideAnimation.length) {
+                        var animation = insideAnimation.data("animation");
+                        insideAnimation.addClass("animate").addClass(animation);
+                        $("html").scrollTop($("html").scrollTop() + 1);
+                    }
                 }
 
                 media.each(function () {

@@ -91,6 +91,8 @@
     --icon-size-20: var(--20px);
     --icon-size-26: var(--26px);
     --icon-size-32: var(--32px);
+    --icon-size-36: var(--36px);
+    --icon-size-40: var(--40px);
 
     --spacing-160: var(--160px);
     --spacing-140: var(--140px);
@@ -148,6 +150,10 @@
 }
 
 /*FIX====================*/
+.no-scroll {
+    height: 100% !important;
+    overflow: hidden !important;
+}
 /* SITE */
 /*BLURRED IMAGE====================*/
 .blurred-media {
@@ -653,6 +659,20 @@
     margin-right: auto !important;
 }
 
+.cover {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center;
+}
+
+.contain {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    object-position: center;
+}
+
 /*RESET====================*/
 *,
 *:before,
@@ -692,7 +712,9 @@ header,
 hgroup,
 main,
 nav,
-section {
+section,
+dl,
+dd {
     display: block;
     margin: 0;
 }
@@ -925,8 +947,17 @@ strong {
     text-decoration: underline;
 }
 
+.size-icon-16 {
+    font-size: var(--icon-size-16) !important;
+}
 .size-icon-20 {
     font-size: var(--icon-size-20) !important;
+}
+.size-icon-26 {
+    font-size: var(--icon-size-26) !important;
+}
+.size-icon-32 {
+    font-size: var(--icon-size-32) !important;
 }
 
 .size-icon-36 {
@@ -1000,7 +1031,7 @@ select,
 }
 
 /*CTAs====================*/
-a:hover {
+html.no-touchevents a:hover {
     color: var(--color-active);
 }
 
@@ -1267,7 +1298,7 @@ a:hover {
     font-family: "iconfont";
     content: "\e90a";
     font-weight: normal;
-    font-size: var(--font-size-16);
+    font-size: var(--icon-size-16);
     margin: 0 var(--spacing-12);
 }
 
@@ -1681,7 +1712,7 @@ textarea {
 .select:after {
     font-family: "iconfont";
     content: "\e90c";
-    font-size: var(--font-size-16);
+    font-size: var(--icon-size-16);
     font-weight: normal;
     line-height: 1;
     color: inherit;
@@ -1897,7 +1928,7 @@ textarea {
     .select2-selection--single
     .select2-selection__clear:before {
     font-family: "iconfont";
-    font-size: var(--font-size-16);
+    font-size: var(--icon-size-16);
     font-weight: normal;
     line-height: 1;
     vertical-align: top;
