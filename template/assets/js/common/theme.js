@@ -699,16 +699,18 @@ jQuery(function ($) {
         var _windowHeight = $(window).outerHeight() / 4;
 
         if (window.location.hash) {
-            $("html, body")
-                .delay(100)
-                .animate(
-                    {
-                        scrollTop:
-                            $(window.location.hash).offset().top -
-                            _windowHeight,
-                    },
-                    800
-                );
+            var $target = $(window.location.hash);
+
+            if ($target.length) {
+                $("html, body")
+                    .delay(100)
+                    .animate(
+                        {
+                            scrollTop: $target.offset().top - _windowHeight,
+                        },
+                        800
+                    );
+            }
         }
     }, 100);
 });

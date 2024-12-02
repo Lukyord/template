@@ -17,8 +17,7 @@ $page_index = ($page == basename(dirname($_SERVER['PHP_SELF']), "/") || $page ==
 
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo $root; ?>assets/img/favicon/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $root; ?>assets/img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $root; ?>assets/img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $root; ?>assets/img/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="<?php echo $root; ?>assets/img/favicon/favicon-96x96.png">
     <link rel="manifest" href="<?php echo $root; ?>assets/img/favicon/site.webmanifest">
     <link rel="mask-icon" href="<?php echo $root; ?>assets/img/favicon/safari-pinned-tab.svg" color="#3C2631">
     <meta name="msapplication-TileColor" content="#E0DAD0">

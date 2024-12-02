@@ -8,6 +8,7 @@
     --60px: 3.75rem;
     --56px: 3.5rem;
     --50px: 3.125rem;
+    --48px: 3rem;
     --46px: 2.875rem;
     --40px: 2.5rem;
     --36px: 2.25rem;
@@ -25,6 +26,7 @@
     --10px: 0.625rem;
     --8px: 0.5rem;
     --6px: 0.375rem;
+    --4px: 0.25rem;
 
     --color-black: #000000;
     --color-black-rgb: 0, 0, 0;
@@ -103,6 +105,7 @@
     --spacing-60: var(--60px);
     --spacing-56: var(--56px);
     --spacing-50: var(--50px);
+    --spacing-48: var(--48px);
     --spacing-40: var(--40px);
     --spacing-36: var(--36px);
     --spacing-30: var(--30px);
@@ -113,12 +116,14 @@
     --spacing-10: var(--10px);
     --spacing-8: var(--8px);
     --spacing-6: var(--6px);
+    --container-max-width: var(--1782px);
     --spacing-container: 0px;
     --spacing-x: 0px;
     --spacing-y: 0px;
 
     --hamburger-width: 36px;
-    --hamburger-height: 2px;
+    --hamburger-height: 36px;
+    --hamburger-stroke-width: 2px;
     --hamburger-gap: 8px;
     --hamburger-background: var(--color-white);
     --logo-height: var(--36px);
@@ -354,6 +359,15 @@
 .margin-top-12:not(:first-child) {
     margin-top: var(--spacing-12) !important;
 }
+.margin-top-10:not(:first-child) {
+    margin-top: var(--spacing-10) !important;
+}
+.margin-top-8:not(:first-child) {
+    margin-top: var(--spacing-8) !important;
+}
+.margin-top-6:not(:first-child) {
+    margin-top: var(--spacing-6) !important;
+}
 
 .margin-bottom-160:not(:last-child) {
     margin-bottom: var(--spacing-160) !important;
@@ -399,6 +413,15 @@
 }
 .margin-bottom-12:not(:last-child) {
     margin-bottom: var(--spacing-12) !important;
+}
+.margin-bottom-10:not(:last-child) {
+    margin-bottom: var(--spacing-10) !important;
+}
+.margin-bottom-8:not(:last-child) {
+    margin-bottom: var(--spacing-8) !important;
+}
+.margin-bottom-6:not(:last-child) {
+    margin-bottom: var(--spacing-6) !important;
 }
 
 .padding-0 {
@@ -1603,7 +1626,7 @@ html.no-touchevents a:hover {
     position: relative;
     display: block;
     width: var(--hamburger-width);
-    height: var(--hamburger-width);
+    height: var(--hamburger-height);
 }
 .hamburger .bars,
 .hamburger .bars:before,
@@ -1611,7 +1634,7 @@ html.no-touchevents a:hover {
     position: absolute;
     left: 0;
     width: 100%;
-    height: var(--hamburger-height);
+    height: var(--hamburger-stroke-width);
     background-color: var(--hamburger-background);
     transition: var(--duration) var(--timing-function);
 }
@@ -1621,7 +1644,7 @@ html.no-touchevents a:hover {
     line-height: 0;
     top: 50%;
     transform: translateY(-50%);
-    transition-property: background-color, height, transform;
+    transition-property: background-color, height, transform, opacity;
 }
 .hamburger .bars:before,
 .hamburger .bars:after {
@@ -1642,30 +1665,30 @@ html.no-touchevents a:hover {
 .ctrl.active > .hamburger .bars {
     transform: translateY(-50%) rotate(45deg);
     transition-delay: 0s, 0s, 0.1s;
-    background-color: var(--color-pink);
+    background-color: var(--color-active);
 }
 .ctrl.active > .hamburger .bars:before {
     top: 0;
     opacity: 0;
-    background-color: var(--color-pink);
+    background-color: var(--color-active);
 }
 .ctrl.active > .hamburger .bars:after {
     bottom: 0;
     transform: rotate(-90deg);
     transition-delay: 0s, 0s, 0s, 0.1s;
-    background-color: var(--color-pink);
+    background-color: var(--color-active);
 }
 
 html.page-scrolling .hamburger {
-    --hamburger-background: var(--color-pink);
+    --hamburger-background: var(--color-active);
 }
 
 .ctrl:is(:hover) > .hamburger {
-    --hamburger-background: var(--color-pink);
+    --hamburger-background: var(--color-active);
 }
 
 .ctrl.active:is(:hover) > .hamburger .bars {
-    --hamburger-background: var(--color-pink-active);
+    opacity: var(--opacity);
 }
 
 /*FORM====================*/
@@ -2622,7 +2645,7 @@ img.mfp-img {
     opacity: 1;
     transition: var(--duration) var(--timing-function);
 }
-*[class*="swiper-button-"]:hover:after {
+html.no-touchevents *[class*="swiper-button-"]:hover:after {
     color: var(--color-theme);
 }
 .swiper-button-prev:after {
