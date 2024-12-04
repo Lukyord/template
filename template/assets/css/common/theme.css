@@ -4,6 +4,7 @@
     --120px: 7.5rem;
     --100px: 6.25rem;
     --80px: 5rem;
+    --72px: 4.5rem;
     --64px: 4rem;
     --60px: 3.75rem;
     --56px: 3.5rem;
@@ -92,6 +93,7 @@
     --icon-size-16: var(--16px);
     --icon-size-20: var(--20px);
     --icon-size-26: var(--26px);
+    --icon-size-30: var(--30px);
     --icon-size-32: var(--32px);
     --icon-size-36: var(--36px);
     --icon-size-40: var(--40px);
@@ -101,6 +103,7 @@
     --spacing-120: var(--120px);
     --spacing-100: var(--100px);
     --spacing-80: var(--80px);
+    --spacing-72: var(--72px);
     --spacing-64: var(--64px);
     --spacing-60: var(--60px);
     --spacing-56: var(--56px);
@@ -168,13 +171,17 @@
     filter: blur(10px);
 }
 
+.blurred-media.white-pulse::before {
+    background-color: var(--color-white);
+}
+
 .blurred-media::before {
     content: "";
     position: absolute;
     inset: 0;
     opacity: 0;
     animation: pulse 1.5s infinite;
-    background-color: var(--color-black);
+    background-color: var(--color-gray-dark);
 }
 
 @keyframes pulse {
@@ -871,6 +878,18 @@ img {
     max-width: 100%;
     vertical-align: middle;
 }
+.cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.contain {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
 table {
     width: 100%;
     border-collapse: collapse;
@@ -983,11 +1002,19 @@ strong {
     font-size: var(--icon-size-32) !important;
 }
 
-.size-icon-36 {
+.size-icon-26:before {
+    font-size: var(--icon-size-26) !important;
+}
+
+.size-icon-30:before {
+    font-size: var(--icon-size-30) !important;
+}
+
+.size-icon-36:before {
     font-size: var(--icon-size-36) !important;
 }
 
-.size-icon-40 {
+.size-icon-40:before {
     font-size: var(--icon-size-40) !important;
 }
 
