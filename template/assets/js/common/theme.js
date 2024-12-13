@@ -792,34 +792,6 @@ jQuery(function ($) {
     //     time: 1500,
     //   });
     // }
-    $.easing.easeOutExpoCustom = function (x) {
-        return x === 1 ? 1 : 1 - Math.pow(3, -10 * x);
-    };
-    $(".countup").each(function () {
-        var $this = $(this),
-            countTo = $this.attr("data-stop");
-
-        function addSeparator(num) {
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-
-        $({ countNum: $this.text() }).animate(
-            {
-                countNum: countTo,
-            },
-
-            {
-                duration: 3000,
-                easing: "easeOutExpoCustom",
-                step: function () {
-                    $this.text(addSeparator(Math.floor(this.countNum)));
-                },
-                complete: function () {
-                    $this.text(addSeparator(this.countNum));
-                },
-            }
-        );
-    });
 
     //LIMARQUEE
     // if ($('*[data-js="liMarquee"]').length) {
@@ -1407,6 +1379,61 @@ jQuery(function ($) {
 // }
 
 // requestAnimationFrame(raf);
+
+// ===== COUNTUP =====
+jQuery(document).ready(function () {
+    $.easing.easeOutExpoCustom = function (x) {
+        return x === 1 ? 1 : 1 - Math.pow(3, -10 * x);
+    };
+
+    function startCountAnimation(element) {
+        var $this = $(element),
+            countTo = $this.attr("data-stop");
+
+        function addSeparator(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        $({ countNum: $this.text() }).animate(
+            {
+                countNum: countTo,
+            },
+            {
+                duration: 3000,
+                easing: "easeOutExpoCustom",
+                step: function () {
+                    $this.text(addSeparator(Math.floor(this.countNum)));
+                },
+                complete: function () {
+                    $this.text(addSeparator(this.countNum));
+                },
+            }
+        );
+    }
+
+    if ($(".countup").length) {
+        $(".countup").each(function () {
+            const countUp = $(this);
+            const ratioInView = 1 / 10;
+
+            function inViewCallback() {
+                if (
+                    !$("html").hasClass("overflow-hidden") &&
+                    !countUp.hasClass("animated")
+                ) {
+                    countUp.addClass("in-view animated");
+                    startCountAnimation(countUp);
+                }
+            }
+
+            $(window).on("scroll resize", () => {
+                checkIfInView(ratioInView, countUp, inViewCallback, () => {});
+            });
+
+            checkIfInView(ratioInView, countUp, inViewCallback, () => {});
+        });
+    }
+});
 
 // ===== GSAP =====
 // let panels = gsap.utils.toArray(".gsap-panel");
