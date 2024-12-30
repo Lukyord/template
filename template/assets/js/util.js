@@ -68,6 +68,23 @@ function throttle(func, limit) {
     };
 }
 
+// CHECK IF FULLY IN VIEW ============================
+function checkIfFullyInView(content, inViewCallback, outOfViewCallback) {
+    if (content.length === 0) {
+        console.log("Content not found");
+        return;
+    }
+
+    var rect = content[0].getBoundingClientRect();
+    var windowHeight = $(window).height();
+
+    if (rect.top >= 0 && rect.bottom <= windowHeight) {
+        inViewCallback();
+    } else {
+        outOfViewCallback();
+    }
+}
+
 // CHECK IF IN VIEW ============================
 // var ratioInView = 1 / 2; 1/2 of the section is in view
 function checkIfInView(
