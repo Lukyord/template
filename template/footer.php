@@ -35,9 +35,9 @@
 <script src="<?php echo $root; ?>assets/plugin/gsap/Flip.min.js"></script>
 
 <!-- JS:CONFIG -->
-<script src="<?php echo $root; ?>assets/js/common/theme.js?v=<?php echo time(); ?>"></script>
-<script src="<?php echo $root; ?>assets/js/common/theme-wp.js?v=<?php echo time(); ?>"></script>
-<script src="<?php echo $root; ?>assets/js/common/util.js?v=<?php echo time(); ?>"></script>
+<script src="<?php echo $root; ?>assets/js/theme.js?v=<?php echo time(); ?>"></script>
+<script src="<?php echo $root; ?>assets/js/theme-wp.js?v=<?php echo time(); ?>"></script>
+<script src="<?php echo $root; ?>assets/js/util.js?v=<?php echo time(); ?>"></script>
 
 </body>
 

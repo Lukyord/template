@@ -1,22 +1,46 @@
 <!-- NOTE : FUNCTION GROUP -->
-<!-- CASE 1 : (D)PICTURE (M)PICTURE -->
-<picture class="object-fit animate matrixZoomOut">
-    <source media="(min-width:992px)" srcset="./assets/img/design/_filename.jpg">
-    <source media="(min-width:0px)" srcset="./assets/img/design/_filename-m.jpg">
-    <img src="./assets/img/design/_filename.jpg" alt="">
-</picture>
 
-<!-- CASE 2 : (D)VIDEO (M)VIDEO -->
-<figure class="object-fit animate matrixZoomOut">
-    <video playsinline autoplay muted loop src="" class="vdojs" data-vdo-src="./assets/img/design/_filename.mp4" data-vdo-srcset="./assets/img/design/_filename-m.mp4" poster="./assets/img/design/_filename.jpg"></video>
-</figure>
+<?php
+if (isset($section_cover) && !empty($section_cover)) {
+    $section_cover_m = isset($section_cover_m) && !empty($section_cover_m) ? $section_cover_m : $section_cover;
 
-<!-- CASE 3 : FLEXIBLE -->
-<figure class="object-fit hidden-device-sm animate matrixZoomOut">
-    <video playsinline autoplay muted loop src="" class="vdojs" data-vdo-src="./assets/img/design/_filename.mp4"></video>
-    <!-- <img src="./assets/img/design/_filename.jpg" alt=""> -->
-</figure>
-<figure class="object-fit visible-device-sm animate matrixZoomOut">
-    <!-- <video playsinline autoplay muted loop src="" class="vdojs" data-vdo-src="./assets/img/design/_filename-m.mp4"></video> -->
-    <img src="./assets/img/design/_filename-m.jpg" alt="">
-</figure>
+    $isImageCover = preg_match("/\.(jpg|png)$/", $section_cover);
+    $isImageCoverM = preg_match("/\.(jpg|png)$/", $section_cover_m);
+
+    $isVideoCover = preg_match("/\.(mp4)$/", $section_cover);
+    $isVideoCoverM = preg_match("/\.(mp4)$/", $section_cover_m);
+
+    if ($isImageCover && $isImageCoverM) { ?>
+        <picture class="object-fit">
+            <source media="(min-width:992px)" srcset="<?php echo $section_cover; ?>">
+            <source media="(min-width:0px)" srcset="<?php echo $section_cover_m; ?>">
+            <img src="<?php echo $section_cover; ?>" alt="">
+        </picture>
+    <?php
+    } elseif ($isVideoCover && $isVideoCoverM) { ?>
+        <figure class="object-fit">
+            <video playsinline autoplay muted loop src="" class="vdojs" data-vdo-src="<?php echo $section_cover; ?>" data-vdo-srcset="<?php echo $section_cover_m; ?>"></video>
+        </figure>
+    <?php
+    } else { ?>
+        <figure class="object-fit hidden-device-sm">
+            <?php if ($isVideoCover) { ?>
+                <video playsinline autoplay muted loop src="<?php echo $section_cover; ?>"></video>
+            <?php } else { ?>
+                <img src="<?php echo $section_cover; ?>" alt="">
+            <?php } ?>
+        </figure>
+
+        <figure class="object-fit visible-device-sm">
+            <?php if ($isVideoCoverM) { ?>
+                <video playsinline autoplay muted loop src="<?php echo $section_cover_m; ?>"></video>
+            <?php } else { ?>
+                <img src="<?php echo $section_cover_m; ?>" alt="">
+            <?php } ?>
+        </figure>
+<?php
+    }
+} else {
+    echo 'No media available.';
+}
+?>

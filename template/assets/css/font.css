@@ -1,0 +1,121 @@
+@font-face {
+    font-family: "IBM Plex Sans";
+    src: url("../font/IBMPlexSans/IBMPlexSans-Regular.eot");
+    src: url("../font/IBMPlexSans/IBMPlexSans-Regular.eot?#iefix")
+            format("embedded-opentype"),
+        url("../font/IBMPlexSans/IBMPlexSans-Regular.woff2") format("woff2"),
+        url("../font/IBMPlexSans/IBMPlexSans-Regular.woff") format("woff"),
+        url("../font/IBMPlexSans/IBMPlexSans-Regular.ttf") format("truetype"),
+        url("../font/IBMPlexSans/IBMPlexSans-Regular.svg#IBMPlexSans-Regular")
+            format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "IBM Plex Sans";
+    src: url("../font/IBMPlexSans/IBMPlexSans-Italic.eot");
+    src: url("../font/IBMPlexSans/IBMPlexSans-Italic.eot?#iefix")
+            format("embedded-opentype"),
+        url("../font/IBMPlexSans/IBMPlexSans-Italic.woff2") format("woff2"),
+        url("../font/IBMPlexSans/IBMPlexSans-Italic.woff") format("woff"),
+        url("../font/IBMPlexSans/IBMPlexSans-Italic.ttf") format("truetype"),
+        url("../font/IBMPlexSans/IBMPlexSans-Italic.svg#IBMPlexSans-Italic")
+            format("svg");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "IBM Plex Sans";
+    src: url("../font/IBMPlexSans/IBMPlexSans-Bold.eot");
+    src: url("../font/IBMPlexSans/IBMPlexSans-Bold.eot?#iefix")
+            format("embedded-opentype"),
+        url("../font/IBMPlexSans/IBMPlexSans-Bold.woff2") format("woff2"),
+        url("../font/IBMPlexSans/IBMPlexSans-Bold.woff") format("woff"),
+        url("../font/IBMPlexSans/IBMPlexSans-Bold.ttf") format("truetype"),
+        url("../font/IBMPlexSans/IBMPlexSans-Bold.svg#IBMPlexSans-Bold")
+            format("svg");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "IBM Plex Sans";
+    src: url("../font/IBMPlexSans/IBMPlexSans-BoldItalic.eot");
+    src: url("../font/IBMPlexSans/IBMPlexSans-BoldItalic.eot?#iefix")
+            format("embedded-opentype"),
+        url("../font/IBMPlexSans/IBMPlexSans-BoldItalic.woff2") format("woff2"),
+        url("../font/IBMPlexSans/IBMPlexSans-BoldItalic.woff") format("woff"),
+        url("../font/IBMPlexSans/IBMPlexSans-BoldItalic.ttf") format("truetype"),
+        url("../font/IBMPlexSans/IBMPlexSans-BoldItalic.svg#IBMPlexSans-BoldItalic")
+            format("svg");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Be Vietnam Pro";
+    src: url("../font/BeVietnamPro/BeVietnamPro-Regular.eot");
+    src: url("../font/BeVietnamPro/BeVietnamPro-Regular.eot?#iefix")
+            format("embedded-opentype"),
+        url("../font/BeVietnamPro/BeVietnamPro-Regular.woff2") format("woff2"),
+        url("../font/BeVietnamPro/BeVietnamPro-Regular.woff") format("woff"),
+        url("../font/BeVietnamPro/BeVietnamPro-Regular.ttf") format("truetype"),
+        url("../font/BeVietnamPro/BeVietnamPro-Regular.svg#BeVietnamPro-Regular")
+            format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Be Vietnam Pro";
+    src: url("../font/BeVietnamPro/BeVietnamPro-Italic.eot");
+    src: url("../font/BeVietnamPro/BeVietnamPro-Italic.eot?#iefix")
+            format("embedded-opentype"),
+        url("../font/BeVietnamPro/BeVietnamPro-Italic.woff2") format("woff2"),
+        url("../font/BeVietnamPro/BeVietnamPro-Italic.woff") format("woff"),
+        url("../font/BeVietnamPro/BeVietnamPro-Italic.ttf") format("truetype"),
+        url("../font/BeVietnamPro/BeVietnamPro-Italic.svg#BeVietnamPro-Italic")
+            format("svg");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Be Vietnam Pro";
+    src: url("../font/BeVietnamPro/BeVietnamPro-Bold.eot");
+    src: url("../font/BeVietnamPro/BeVietnamPro-Bold.eot?#iefix")
+            format("embedded-opentype"),
+        url("../font/BeVietnamPro/BeVietnamPro-Bold.woff2") format("woff2"),
+        url("../font/BeVietnamPro/BeVietnamPro-Bold.woff") format("woff"),
+        url("../font/BeVietnamPro/BeVietnamPro-Bold.ttf") format("truetype"),
+        url("../font/BeVietnamPro/BeVietnamPro-Bold.svg#BeVietnamPro-Bold")
+            format("svg");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Be Vietnam Pro";
+    src: url("../font/BeVietnamPro/BeVietnamPro-BoldItalic.eot");
+    src: url("../font/BeVietnamPro/BeVietnamPro-BoldItalic.eot?#iefix")
+            format("embedded-opentype"),
+        url("../font/BeVietnamPro/BeVietnamPro-BoldItalic.woff2")
+            format("woff2"),
+        url("../font/BeVietnamPro/BeVietnamPro-BoldItalic.woff") format("woff"),
+        url("../font/BeVietnamPro/BeVietnamPro-BoldItalic.ttf")
+            format("truetype"),
+        url("../font/BeVietnamPro/BeVietnamPro-BoldItalic.svg#BeVietnamPro-BoldItalic")
+            format("svg");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
