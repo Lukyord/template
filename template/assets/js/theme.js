@@ -1182,12 +1182,12 @@ jQuery(document).ready(function ($) {
     // Global debounce function is used, so no need to define it locally
 });
 
-/*::* POPUP *::*/
+/*::* FANCY BOX *::*/
 jQuery(document).ready(function ($) {
     if ($('[data-fancybox="gallery"]').length) {
         Fancybox.bind('[data-fancybox="gallery"]', {
             mainClass: "",
-            animated: false,
+            animated: true,
             wheel: false,
             hideScrollbar: false,
             idle: false,
@@ -1206,6 +1206,7 @@ jQuery(document).ready(function ($) {
                         const slides =
                             document.querySelectorAll(".fancybox__slide");
                         slides.forEach((slide) => {
+                            // Caption
                             const caption =
                                 slide.querySelector(".fancybox__caption");
                             if (caption) {
@@ -1226,12 +1227,43 @@ jQuery(document).ready(function ($) {
                                     slide.appendChild(footer);
                                 }
                             }
+
+                            const closeButton = slide.querySelector(
+                                ".f-button.is-close-btn"
+                            );
+
+                            if (closeButton) {
+                                closeButton.parentNode.removeChild(closeButton);
+
+                                slide.appendChild(closeButton);
+                            }
                         });
                     }
                 },
             },
         });
     }
+});
+
+/*::* MAGNIFIC POPUP *::*/
+jQuery(document).ready(function ($) {
+    $(".open-popup-modal").magnificPopup({
+        type: "inline",
+        preloader: false,
+        closeOnBgClick: true,
+        mainClass: "popup-style popup-style-modal",
+        showCloseBtn: true,
+        closeBtnInside: true,
+        removalDelay: 300,
+        callbacks: {
+            open: function () {
+                $("html").addClass("plugin-mfp-enabled");
+            },
+            close: function () {
+                $("html").removeClass("plugin-mfp-enabled");
+            },
+        },
+    });
 });
 
 /*::* HEADER *::*/
