@@ -12,7 +12,7 @@ $page_index = ($page == basename(dirname($_SERVER['PHP_SELF']), "/") || $page ==
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta property="og:title" content="TITLE">
-    <meta property="og:image" content="<?php echo $root; ?>assets/media/og.jpg">
+    <meta property="og:image" content="<?php echo $root; ?>assets/media/share.jpg">
     <meta property="og:type" content="website">
 
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo $root; ?>assets/media/favicon/favicon.ico">
@@ -30,6 +30,7 @@ $page_index = ($page == basename(dirname($_SERVER['PHP_SELF']), "/") || $page ==
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/_wp-css/plugins/contact-form-7/styles.css" type="text/css" media="all">
     <!-- CSS:LIBRARY -->
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/library/animate.min.css">
+    <link rel="stylesheet" href="<?php echo $root; ?>assets/css/library/jquery-ui-effect.min.css">
     <link rel="stylesheet" href="<?php echo $root; ?>assets/plugin/magnific-popup/magnific-popup.min.css">
     <link rel="stylesheet" href="<?php echo $root; ?>assets/plugin/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="<?php echo $root; ?>assets/plugin/liMarquee/liMarquee.css">

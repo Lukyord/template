@@ -23,7 +23,7 @@ if (isset($section_cover) && !empty($section_cover)) {
         </figure>
     <?php
     } else { ?>
-        <figure class="object-fit hidden-device-sm">
+        <figure class="object-fit show-md">
             <?php if ($isVideoCover) { ?>
                 <video playsinline autoplay muted loop src="<?php echo $section_cover; ?>"></video>
             <?php } else { ?>
@@ -31,7 +31,7 @@ if (isset($section_cover) && !empty($section_cover)) {
             <?php } ?>
         </figure>
 
-        <figure class="object-fit visible-device-sm">
+        <figure class="object-fit hidden-device-md">
             <?php if ($isVideoCoverM) { ?>
                 <video playsinline autoplay muted loop src="<?php echo $section_cover_m; ?>"></video>
             <?php } else { ?>

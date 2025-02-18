@@ -6,11 +6,11 @@
     padding: 0 !important;
     margin: 0 auto !important;
     position: fixed !important;
-    z-index: 10000 !important;
+    z-index: 100 !important;
     top: auto !important;
-    bottom: var(--spacing-container) !important;
-    left: var(--spacing-container) !important;
-    right: auto !important;
+    bottom: var(--spacing-4xs) !important;
+    right: var(--spacing-4xs) !important;
+    left: auto !important;
     background: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -31,7 +31,7 @@
     font-weight: var(--font-weight-body) !important;
     font-size: var(--font-size-body) !important;
     line-height: var(--line-height-body) !important;
-    padding: var(--spacing-24) !important;
+    padding: var(--spacing-2sm) !important;
     transition: var(--duration) var(--timing-function) !important;
 }
 .cky-notice .cky-title,
@@ -54,7 +54,7 @@
     color: var(--color-theme) !important;
 }
 .cky-notice .cky-title:not(:last-child) {
-    margin-bottom: var(--spacing-16) !important;
+    margin-bottom: var(--spacing-xs) !important;
 }
 .cky-notice .cky-title:empty {
     display: none !important;
@@ -64,13 +64,13 @@
     flex-direction: column !important;
     align-items: flex-start !important;
     justify-content: flex-start !important;
-    grid-gap: var(--spacing-24) !important;
+    grid-gap: var(--spacing-2sm) !important;
 }
 .cky-notice-group > * {
     width: 100% !important;
 }
 .cky-notice-des > *:not(:first-child) {
-    margin-top: var(--spacing-24);
+    margin-top: var(--spacing-2sm);
 }
 .cky-notice-des .cky-policy {
     outline: 0 !important;
@@ -98,7 +98,7 @@
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
-    grid-gap: var(--spacing-16) !important;
+    grid-gap: var(--spacing-xs) !important;
 }
 .cky-notice-btn-wrapper .cky-btn {
     text-decoration: none !important;
@@ -138,7 +138,7 @@
 }
 .cky-notice-btn-wrapper .cky-btn:is(.cky-btn-accept, .cky-btn-reject) {
     --gap-y: 0px;
-    --gap-x: var(--spacing-16);
+    --gap-x: var(--spacing-xs);
     --icon-width: 30px;
     --icon-height: 8px;
     display: inline-flex !important;
@@ -219,7 +219,7 @@
     color: var(--color-red);
 }
 .wpcf7-form .wpcf7-form-control-wrap .wpcf7-not-valid-tip {
-    margin-top: var(--spacing-12);
+    margin-top: var(--spacing-2xs);
 }
 .wpcf7-form .wpcf7-response-output {
     margin: var(--spacing-20) 0 0 !important;
@@ -231,7 +231,7 @@
     margin: 0 auto;
     left: 0;
     right: auto;
-    top: calc(100% + var(--spacing-12));
+    top: calc(100% + var(--spacing-2xs));
 }
 .wpcf7-form .a-center .ajax-loader {
     left: 0;
@@ -263,7 +263,7 @@ form.wpcf7-form.submitting button[type="submit"] {
     position: relative;
     display: flex;
     align-items: center;
-    grid-gap: var(--spacing-16);
+    grid-gap: var(--spacing-xs);
     font-weight: var(--font-weight-body);
     font-size: var(--font-size-body);
     line-height: var(--line-height-body);
@@ -286,7 +286,7 @@ form.wpcf7-form.submitting button[type="submit"] {
     width: auto;
     min-width: var(--button-height);
     height: var(--button-height);
-    padding: var(--spacing-12);
+    padding: var(--spacing-2xs);
     color: var(--color-black);
     background: var(--color-white);
     border: var(--border-width) solid var(--border-color);
@@ -330,7 +330,7 @@ form.wpcf7-form.submitting button[type="submit"] {
 @media (max-width: 575px) {
     .wp-pagenavi {
         --button-height: 50px;
-        grid-column-gap: var(--spacing-16);
+        grid-column-gap: var(--spacing-xs);
     }
 }
 

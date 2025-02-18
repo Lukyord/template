@@ -18,6 +18,7 @@
 <!-- JS:LIBRARY -->
 <script src="<?php echo $root; ?>assets/js/library/bundle.js"></script>
 <script src="<?php echo $root; ?>assets/js/library/share.js"></script>
+<script src="<?php echo $root; ?>assets/js/library/jquery-ui-effect.min.js"></script>
 <script src="<?php echo $root; ?>assets/plugin/select2/select2.min.js"></script>
 <script src="<?php echo $root; ?>assets/plugin/magnific-popup/jquery.magnific-popup.min.js"></script>
 <script src="<?php echo $root; ?>assets/plugin/swiper/swiper-bundle.min.js"></script>

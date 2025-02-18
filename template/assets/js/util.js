@@ -118,9 +118,9 @@ function checkIfInView(
 // var headerOffset = $header.outerHeight();
 function checkIfScrolledPast(
     content,
-    offSet,
-    scrollPastCallback,
-    notScrolledPastCallback
+    offSet = 0,
+    scrollPastCallback = () => {},
+    notScrolledPastCallback = () => {}
 ) {
     if (content.length === 0) {
         console.log("Content not found");

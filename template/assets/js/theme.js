@@ -199,31 +199,33 @@ jQuery(document).ready(function ($) {
 });
 
 /*::* HANDLE VIDEO SOURCE *::*/
-function handleVideoSource() {
-    function updateVideoSource(element) {
-        const vdoSrc = element.dataset.vdoSrc;
-        const vdoSrcset = element.dataset.vdoSrcset || "";
-        const viewportWidth = window.innerWidth;
-        element.setAttribute(
-            "src",
-            viewportWidth < 992 && vdoSrcset ? vdoSrcset : vdoSrc
-        );
-    }
-
-    function initializeVideos() {
-        document.querySelectorAll(".vdojs").forEach(updateVideoSource);
-    }
-    initializeVideos();
-    let previousWidth = window.innerWidth;
-    window.addEventListener("resize", () => {
-        const currentWidth = window.innerWidth;
-        if (currentWidth !== previousWidth) {
-            initializeVideos();
-            previousWidth = currentWidth;
+jQuery(document).ready(function ($) {
+    function handleVideoSource() {
+        function updateVideoSource(element) {
+            const vdoSrc = element.dataset.vdoSrc;
+            const vdoSrcset = element.dataset.vdoSrcset || "";
+            const viewportWidth = window.innerWidth;
+            element.setAttribute(
+                "src",
+                viewportWidth < 992 && vdoSrcset ? vdoSrcset : vdoSrc
+            );
         }
-    });
-}
-handleVideoSource();
+
+        function initializeVideos() {
+            document.querySelectorAll(".vdojs").forEach(updateVideoSource);
+        }
+        initializeVideos();
+        let previousWidth = window.innerWidth;
+        window.addEventListener("resize", () => {
+            const currentWidth = window.innerWidth;
+            if (currentWidth !== previousWidth) {
+                initializeVideos();
+                previousWidth = currentWidth;
+            }
+        });
+    }
+    handleVideoSource();
+});
 
 /*::* LENIS *::*/
 document.addEventListener("DOMContentLoaded", () => {
@@ -234,7 +236,6 @@ document.addEventListener("DOMContentLoaded", () => {
         smooth: true,
         eventsTarget: document.querySelector("#page"),
     });
-    lenis.scrollTo(0, { duration: 0 });
     lenis.on("scroll", (e) => {});
     const animate = (time) => {
         lenis.raf(time);
@@ -442,14 +443,64 @@ jQuery(document).ready(function ($) {
         }
     }
 
-    if ($(window).scrollTop() === 0) {
-        pageAnimate();
-        triggerScrollTriggerLogic();
-    } else {
-        $("html, body").animate({ scrollTop: 0 }, function () {
-            pageAnimate();
-            triggerScrollTriggerLogic();
+    pageAnimate();
+    triggerScrollTriggerLogic();
+});
+
+/*::* MARQUEE *::*/
+jQuery(document).ready(function ($) {
+    if ($('*[data-js="liMarquee"]').length) {
+        $('*[data-js="liMarquee"]:visible').each(function () {
+            var _this = $(this);
+            var marqueeWrapper = _this.closest(".marquee-wrapper");
+            var notDraggable = _this.hasClass("no-drag");
+
+            function init() {
+                marqueeWrapper.liMarquee({
+                    startShow: true,
+                    scrollDelay: 150,
+                    scrollStop: false,
+                    circular: true,
+                    dragAndDrop: notDraggable ? false : true,
+                    hoverStop: true,
+                });
+            }
+
+            init();
         });
+    }
+});
+
+/*::* SPLIT *::*/
+jQuery(document).ready(function ($) {
+    if ($("*[data-split]").length) {
+        Splitting({
+            target: "[data-split]",
+            by: "chars",
+            key: null,
+        });
+
+        $("*[data-split][data-split-animate]")
+            .find(".word")
+            .each(function () {
+                $(this).wrapInner('<span class="word-animate animate"></span>');
+            });
+
+        $("*[data-split][data-highlight]")
+            .find(".word")
+            .each(function () {
+                const highlight = $("[data-split]").data("highlight");
+                const highlightClass =
+                    $("[data-split]").data("highlight-class");
+                const word = $(this).data("word");
+
+                if (highlight == word) {
+                    $(this).addClass("overflow-visible");
+                    $(this).append(
+                        `<div class="${highlightClass}" data-wow-delay="0.5s"></div>`
+                    );
+                }
+            });
     }
 });
 
@@ -792,26 +843,26 @@ jQuery(function ($) {
                 var $thisPanel = $thisParent.find("> .entry-panel");
 
                 if ($parent.hasClass("toggle")) {
+                    if ($thisParent.hasClass("active")) return;
+
                     $neighbors.removeClass("active");
-                    $neighborContents.slideUp(200);
+                    $neighborContents.slideUp(800, "easeInOutCubic");
 
                     $thisParent.toggleClass("active");
-                    $thisPanel.slideToggle(200);
+                    $thisPanel.slideToggle(800, "easeInOutCubic");
 
                     setTimeout(function () {
-                        var scrollTop = $thisPanel.is(":visible")
-                            ? $thisParent.offset().top - windowHeight
-                            : $thisParent.offset().top - windowHeight;
+                        var scrollTop = $thisParent.offset().top - windowHeight;
 
                         $("html, body").animate(
                             { scrollTop: scrollTop },
                             800,
                             "linear"
                         );
-                    }, 250);
+                    }, 810);
                 } else {
                     $thisParent.toggleClass("active");
-                    $thisPanel.slideToggle(200);
+                    $thisPanel.slideToggle(800, "easeInOutCubic");
                 }
             });
         });
@@ -1129,9 +1180,11 @@ jQuery(document).ready(function ($) {
                 .hasClass("custom");
             const slideButtonNext =
                 $this.find(".swiper-button-next")[0] ||
+                $this.parent().find(".swiper-button-next")[0] ||
                 $(".swiper-button-next")[0];
             const slideButtonPrev =
                 $this.find(".swiper-button-prev")[0] ||
+                $this.parent().find(".swiper-button-prev")[0] ||
                 $(".swiper-button-prev")[0];
 
             const slidesPerGroup = $this.data("slidespergroup");
@@ -1178,8 +1231,6 @@ jQuery(document).ready(function ($) {
             }, 100);
         });
     }
-
-    // Global debounce function is used, so no need to define it locally
 });
 
 /*::* FANCY BOX *::*/
@@ -1264,6 +1315,66 @@ jQuery(document).ready(function ($) {
             },
         },
     });
+});
+
+/*::* COPY *::*/
+
+// Example
+// ----
+//  <a href="javascript:;" class="copy-clipboard" aria-label="https://www.cheevitcheeva.com"">
+//     <i class="ic ic-copy"></i>
+//     <span id="copy_tooltip" aria-live="assertive" role="tooltip"></span>
+// </a>
+// ----
+jQuery(document).ready(function ($) {
+    let active = false;
+    const copyButton = $(".copy-clipboard");
+
+    const clipboard = new ClipboardJS(".copy-clipboard", {
+        text: function (trigger) {
+            return trigger.getAttribute("aria-label");
+        },
+    });
+
+    clipboard.on("success", function (e) {
+        var copyButtonMessage = "Text Copied!";
+        e.clearSelection();
+        copyButton.focus();
+        if (active) {
+            return;
+        } else {
+            copyMessageTooltip(copyButton, copyButtonMessage);
+        }
+    });
+    clipboard.on("error", function (e) {
+        var copyButtonMessage = "Press Ctrl+C to copy";
+        if (active) {
+            return;
+        } else {
+            copyMessageTooltip(copyButton, copyButtonMessage);
+        }
+    });
+
+    function copyMessageTooltip(copyButton, copyButtonMessage) {
+        active = true;
+
+        var tooltipVisibleTime = 2000;
+        var tooltipHideTime = 100;
+
+        $("#copy_tooltip").text(copyButtonMessage).addClass("active");
+        copyButton.attr("aria-describedby", "copy_tooltip");
+
+        setTimeout(function () {
+            $("#copy_tooltip").removeClass("active").addClass("inactive");
+
+            $("#copy_tooltip").replaceWith($("#copy_tooltip").clone(true));
+            copyButton.removeAttr("aria-describedby");
+            setTimeout(function () {
+                $("#copy_tooltip").removeClass("inactive").text("");
+                active = false;
+            }, tooltipHideTime);
+        }, tooltipVisibleTime);
+    }
 });
 
 /*::* HEADER *::*/
