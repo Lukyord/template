@@ -15,6 +15,15 @@
     .hidden-device-sm {
         display: none !important;
     }
+
+    :root {
+        --line-height-h2: 1.1111111111;
+        --line-height-h3: 1.1818181818;
+        --line-height-h4: 1.2777777778;
+        --line-height-body: 1.4285714286;
+        --line-height-description: 0.7;
+        --line-height-button: 1.6428571429;
+    }
 }
 
 @media (min-width: 992px) {
@@ -42,13 +51,6 @@
         --font-size-body: var(--20px);
         --font-size-description: var(--20px);
         --font-size-button: var(--14px);
-
-        --line-height-h2: 1.1111111111;
-        --line-height-h3: 1.1818181818;
-        --line-height-h4: 1.2777777778;
-        --line-height-body: 1.4285714286;
-        --line-height-description: 0.7;
-        --line-height-button: 1.6428571429;
     }
 }
 
@@ -75,7 +77,6 @@
     /* FOOTER ==================== */
 
     /* COMPONENT */
-
     /* DEFAULT ====================*/
 
     /* SECTION ====================*/
@@ -83,6 +84,7 @@
     /* ELEMENT ====================*/
 
     /* PAGE */
+    /* PAGE: INDEX */
 }
 
 @media (max-width: 767px) {

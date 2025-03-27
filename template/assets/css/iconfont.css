@@ -2,8 +2,7 @@
     font-family: "iconfont";
     src: url("../font/iconfont/iconfont.eot");
     src: url("../font/iconfont/iconfont.eot#iefix") format("embedded-opentype"),
-        url("../font/iconfont/iconfont.ttf") format("truetype"),
-        url("../font/iconfont/iconfont.woff") format("woff"),
+        url("../font/iconfont/iconfont.ttf") format("truetype"), url("../font/iconfont/iconfont.woff") format("woff"),
         url("../font/iconfont/iconfont.svg#iconfont") format("svg");
     font-weight: normal;
     font-style: normal;
@@ -25,6 +24,42 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.ic-fax:before {
+    content: "\e966";
+}
+.ic-mail-min:before {
+    content: "\e967";
+}
+.ic-swipe:before {
+    content: "\e968";
+}
+.ic-contact-support:before {
+    content: "\e963";
+}
+.ic-docs:before {
+    content: "\e964";
+}
+.ic-public:before {
+    content: "\e965";
+}
+.ic-copy:before {
+    content: "\e962";
+}
+.ic-rough-triangle-down:before {
+    content: "\e961";
+}
+.ic-phone_iphone:before {
+    content: "\e95d";
+}
+.ic-mail:before {
+    content: "\e95e";
+}
+.ic-call:before {
+    content: "\e95f";
+}
+.ic-button-icon:before {
+    content: "\e960";
+}
 .ic-history:before {
     content: "\e95c";
 }
