@@ -40,7 +40,6 @@ $page_index = ($page == basename(dirname($_SERVER['PHP_SELF']), "/") || $page ==
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/theme.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/theme-rwd.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/theme-wp.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="<?php echo $root; ?>assets/css/theme-default.css?v=<?php echo time(); ?>">
     <!-- JS:LIBRARY -->
     <script src="<?php echo $root; ?>assets/js/library/modernizr-custom.js"></script>
     <script src="<?php echo $root; ?>assets/js/library/jquery-3.6.0.min.js"></script>

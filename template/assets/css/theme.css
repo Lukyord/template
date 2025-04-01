@@ -2143,7 +2143,7 @@ html.no-touchevents *[class*="swiper-button-"]:hover:after {
     animation-duration: var(--duration);
     -webkit-animation-timing-function: var(--timing-function);
     animation-timing-function: var(--timing-function);
-    will-change: opacity, transform;
+    /* will-change: opacity, transform; */
 }
 .animated {
     -webkit-animation-delay: 0.1s;
