@@ -24,6 +24,51 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.ic-angle-wide-right:before {
+    content: "\e977";
+}
+.ic-angle-wide-left:before {
+    content: "\e976";
+}
+.ic-arrow-thin-right:before {
+    content: "\e975";
+}
+.ic-ticket:before {
+    content: "\e974";
+}
+.ic-card-list-view:before {
+    content: "\e972";
+}
+.ic-calendar-list-view:before {
+    content: "\e973";
+}
+.ic-description:before {
+    content: "\e971";
+}
+.ic-remove:before {
+    content: "\e96f";
+}
+.ic-add:before {
+    content: "\e970";
+}
+.ic-dashboard:before {
+    content: "\e96a";
+}
+.ic-distance:before {
+    content: "\e96b";
+}
+.ic-diversity:before {
+    content: "\e96c";
+}
+.ic-pill:before {
+    content: "\e96d";
+}
+.ic-solar_power:before {
+    content: "\e96e";
+}
+.ic-tiktok-filled:before {
+    content: "\e969";
+}
 .ic-fax:before {
     content: "\e966";
 }

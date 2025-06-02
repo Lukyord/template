@@ -102,10 +102,8 @@
     --spacing-container: var(--spacing-xs);
     --gap-section: var(--spacing-4xl);
 
-    --logo-height: 3.4rem;
-
-    --hamburger-size: 36px;
-    --hamburger-line: 2px;
+    --hamburger-size: 3.6rem;
+    --hamburger-line: 0.2rem;
     --hamburger-gap: 0.8rem;
     --hamburger-background: var(--color-white);
     --logo-height: 3.6rem;
@@ -1159,6 +1157,7 @@ html.no-touchevents .lang ul > li > a:not(.active):hover {
     padding: var(--input-spacing-y) var(--input-spacing-x);
     opacity: 0.5;
 }
+
 textarea {
     --height: calc(var(--input-height) * 2);
     resize: none;
@@ -1168,6 +1167,135 @@ textarea {
     min-width: 100%;
     max-width: 100%;
     min-height: var(--height);
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: var(--spacing-5xs);
+}
+
+.checkbox input[type="checkbox"] {
+    --input-height: 20px;
+    box-shadow: unset;
+    border: none;
+    background: none;
+    padding: inherit;
+    margin: unset;
+    min-width: unset;
+    font: inherit;
+    line-height: normal;
+    text-align: center;
+    width: unset;
+    font: inherit;
+    color: currentColor;
+    width: 1em;
+    height: 1em;
+    border: 0.05em solid currentColor;
+    border-radius: 0.15em;
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    transform-origin: center;
+    box-shadow: inset 1em 1em var(--color-black);
+    clip-path: polygon(16% 48%, 10% 60%, 48% 90%, 92% 20%, 80% 10%, 45% 70%);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.input-file {
+    display: flex;
+    flex-direction: column;
+    grid-gap: var(--spacing-3xs);
+    z-index: 0;
+}
+
+.input-file .file-label .subttl {
+    font-size: var(--font-size-description);
+    line-height: var(--line-height-description);
+    font-weight: var(--font-weight-regular);
+}
+
+.input-file .file-upload-wrapper {
+    display: flex;
+    grid-gap: var(--spacing-4xs);
+    align-items: center;
+}
+
+.input-file .file-upload-button {
+    background-color: var(--color-gray-light);
+    padding: var(--spacing-xs) var(--spacing-xs);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.input-file .file-upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.input-file .file-upload-placeholder .header {
+    display: flex;
+    grid-gap: var(--spacing-5xs);
+    font-size: var(--font-size-description);
+    line-height: var(--line-height-description);
+    align-items: center;
+}
+
+.input-file .file-upload-placeholder .header .cancel-upload {
+    margin-left: auto;
+    width: var(--spacing-sm);
+    aspect-ratio: 1;
+    font-size: var(--font-size-description);
+    line-height: 1;
+    background-color: var(--color-gray);
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+}
+
+.input-file .file-upload-placeholder .file-progress {
+    width: 100%;
+    border-radius: 0;
+    height: 0.2rem;
+    margin-top: var(--spacing-5xs);
+    background-color: var(--color-white);
+}
+
+.input-file .file-upload-placeholder .file-progress {
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    mask-image: radial-gradient(white, white);
+    -webkit-mask-image: radial-gradient(white, white);
+}
+
+.input-file .file-upload-placeholder .file-progress::-webkit-progress-bar {
+    background-color: var(--color-white) !important;
+}
+
+.input-file .file-upload-placeholder .file-progress::-webkit-progress-value {
+    background-color: var(--color-theme);
+}
+
+.input-file .custom-file-upload.filled .file-upload-placeholder .file-description {
+    display: none;
 }
 
 /* SELECT */

@@ -145,7 +145,7 @@ jQuery(function ($) {
 /*::* LOCATION HASH SCROLL *::*/
 jQuery(document).ready(function ($) {
     const windowHeightOffset = $(window).outerHeight() / 4;
-    const defaultHeaderHeight = $("#header-height").outerHeight();
+    const defaultHeaderHeight = $("#header").outerHeight();
 
     // Handle URL hash scrolling on page load with offset
     if (window.location.hash) {
@@ -498,49 +498,18 @@ jQuery(function ($) {
 });
 
 let isSmallScreen;
+
 /*::* STYLING *::*/
 jQuery(document).ready(function ($) {
     function pageStyle() {
-        //header
-        var header = $("#header");
-        var headerNav = header.find(".header-nav");
-        var languageSelect = header.find('*[data-tool="language"]');
-
-        if (headerNav.length) {
-            const headerHeight = headerNav.outerHeight();
-            const headerNavRight = $(window).width() - (headerNav.offset().left + headerNav.outerWidth());
-
-            $("html").css("--header-height", headerHeight + "px");
-            $("html").css("--header-nav-right", headerNavRight + "px");
-        }
-
-        if (languageSelect.length) {
-            const languageSelectWidth = languageSelect.outerHeight();
-            $("html").css("--language-select-height", languageSelectWidth + "px");
-        }
-
         if ($(window).width() < 992) {
             isSmallScreen = true;
         } else {
             isSmallScreen = false;
         }
-
-        // MENU & SUBMENU HEIGHT
-        if ($(window).width() < 1440) {
-            let maxMenuHeight = 0;
-
-            $(".menu, .menu .submenu-mb").each(function () {
-                const elementHeight = $(this).outerHeight();
-                if (elementHeight > maxMenuHeight) {
-                    maxMenuHeight = elementHeight;
-                }
-            });
-
-            $("html").css("--menu-height", `${maxMenuHeight}px`);
-        }
     }
 
-    onWindowResize(pageStyle);
+    onWindowResizeInstant(pageStyle);
 
     // Hover effect
     $(".js-link-hover").each(function () {
@@ -727,6 +696,11 @@ jQuery(document).ready(function ($) {
                         buttonText +
                         "</button></div>"
                 ),
+                $placeholder = $(
+                    '<div class="file-upload-placeholder"><div class="header"><p class="title">' +
+                        $(this).closest(".custom-file-upload").data("placeholder") +
+                        '</p><span class="file-size size-description c-mid-gray"> </span><button type="button" class="cancel-upload" style="display: none;">✖</button></div><progress class="file-progress" value="0" max="100" style="display: none;"></progress></div>'
+                ),
                 $label = $(
                     '<div class="file-upload-action"><label class="file-upload-button" for="' +
                         $file[0].id +
@@ -737,7 +711,7 @@ jQuery(document).ready(function ($) {
 
             $file.css({ position: "absolute", left: "-9999px" });
 
-            $wrap.insertAfter($file).append($file, $input, isIE ? $label : $button);
+            $wrap.insertAfter($file).append($button, $file, $placeholder);
 
             $file.attr("tabIndex", -1);
             $button.attr("tabIndex", -1);
@@ -746,16 +720,76 @@ jQuery(document).ready(function ($) {
                 $file.click();
             });
 
+            function updatePlaceholder(title, fileSize) {
+                $placeholder.find(".title").text(title);
+                $placeholder.find(".file-size").text(fileSize);
+            }
+
+            function formatFileSize(bytes) {
+                if (bytes === 0) return "0 Bytes";
+                var k = 1024,
+                    sizes = ["Bytes", "KB", "MB", "GB"],
+                    i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+            }
+
             $file.change(function () {
-                var fileArr = $file[0].files,
-                    filename = multipleSupport
-                        ? Array.from(fileArr)
-                              .map((file) => file.name)
-                              .join(", ")
-                        : $file.val().split("\\").pop();
+                var files = [],
+                    fileArr = $file[0].files,
+                    filename,
+                    fileSizeText = "";
+
+                // Reference to UI elements
+                var $customFileUpload = $file.closest(".custom-file-upload");
+                var $progressBar = $customFileUpload.find(".file-progress");
+                var $cancelBtn = $customFileUpload.find(".cancel-upload");
+
+                if ($file.attr("multiple")) {
+                    for (var i = 0, len = fileArr.length; i < len; i++) {
+                        files.push(fileArr[i].name);
+                    }
+                    filename = files.join(", ");
+                    fileSizeText = fileArr.length + " files";
+                } else {
+                    filename = $file.val().split("\\").pop();
+                    fileSizeText = fileArr.length > 0 ? formatFileSize(fileArr[0].size) : "";
+                }
 
                 $input.val(filename).attr("title", filename).focus();
-                $input.closest(".input").addClass("filled");
+                updatePlaceholder(filename, fileSizeText);
+
+                $customFileUpload.addClass("filled");
+
+                if (this.files.length === 0) {
+                    $customFileUpload.removeClass("filled");
+                    updatePlaceholder("No file chosen", "");
+                    return;
+                }
+
+                $progressBar.val(0).show();
+                $cancelBtn.show();
+
+                // Simulating File Upload Progress (Replace with real upload logic)
+                var progress = 0;
+                var interval = setInterval(function () {
+                    progress += 10;
+                    $progressBar.val(progress);
+
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        $progressBar.hide();
+                    }
+                }, 300);
+
+                $cancelBtn.off("click").on("click", function () {
+                    clearInterval(interval);
+                    $file.val("");
+                    $input.val("").attr("title", "");
+                    updatePlaceholder("No file chosen", "");
+                    $customFileUpload.removeClass("filled");
+                    $progressBar.hide().val(0);
+                    $cancelBtn.hide();
+                });
             });
 
             $input.on({
@@ -765,11 +799,18 @@ jQuery(document).ready(function ($) {
                 keydown: function (e) {
                     if (e.which === 13) {
                         // Enter
-                        $file.click();
+                        if (!isIE) {
+                            $file.trigger("click");
+                        }
                     } else if (e.which === 8 || e.which === 46) {
                         // Backspace or Delete
-                        $file.val("").trigger("change");
-                        $input.val("").removeClass("filled");
+                        $file.replaceWith(($file = $file.clone(true)));
+                        $file.trigger("change");
+                        $input.val("");
+                    } else if (e.which === 9) {
+                        return;
+                    } else {
+                        return false;
                     }
                 },
             });
@@ -1362,24 +1403,20 @@ jQuery(document).ready(function ($) {
 /*::* HEADER *::*/
 jQuery(document).ready(function ($) {
     // MENU CONTROL TOGGLE
-    $(".header-menu-ctrl > .menu-ctrl")
-        .off("click")
-        .on("click", function () {
-            $("html").toggleClass("header-menu-enabled no-scroll");
-            $(this).toggleClass("active");
+    $(".header-menu-ctrl > .menu-ctrl").on("click", function () {
+        $("html").toggleClass("header-menu-enabled no-scroll");
+        $(this).toggleClass("active");
 
-            $('.header-menu *[class*="-scroll"]').animate({ scrollTop: 0 });
-        });
+        $('.header-menu *[class*="-scroll"]').animate({ scrollTop: 0 });
+    });
 
     // LINK SCROLL OR PANEL OVERLAY CLICK HANDLING
-    $(".header-menu .link-scroll, .header-menu .panel-overlay")
-        .off("click")
-        .on("click", function () {
-            $("html").removeClass("header-menu-enabled no-scroll");
-            $(".header-menu-ctrl > .menu-ctrl").removeClass("active");
+    $(".header-menu .panel-overlay").on("click", function () {
+        $("html").removeClass("header-menu-enabled no-scroll");
+        $(".header-menu-ctrl > .menu-ctrl").removeClass("active");
 
-            $('.header-menu *[class*="-scroll"]').animate({ scrollTop: 0 });
-        });
+        $('.header-menu *[class*="-scroll"]').animate({ scrollTop: 0 });
+    });
 });
 
 /*::* FOOTER *::*/

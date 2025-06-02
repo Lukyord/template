@@ -31,6 +31,25 @@ function onWindowResize(callback, delay = 300, executeOnLoad = true, initialCall
     });
 }
 
+// Window Resize Instant Callback =============================
+function onWindowResizeInstant(callback, executeOnLoad = true) {
+    let lastWidth = $(window).width();
+
+    if (executeOnLoad && typeof callback === "function") {
+        callback();
+    }
+
+    $(window).on("resize", function () {
+        const newWidth = $(window).width();
+
+        if (newWidth !== lastWidth) {
+            lastWidth = newWidth;
+
+            callback();
+        }
+    });
+}
+
 // Function to calculate the 'vw' value
 function calcVw(vw) {
     return (vw / 100) * window.innerWidth;
