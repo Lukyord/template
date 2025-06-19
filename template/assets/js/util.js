@@ -78,60 +78,150 @@ function throttle(func, limit) {
 }
 
 // CHECK IF FULLY IN VIEW ============================
+// function checkIfFullyInView(content, inViewCallback, outOfViewCallback) {
+//     if (content.length === 0) {
+//         console.log("Content not found");
+//         return;
+//     }
+
+//     const rect = content[0].getBoundingClientRect();
+
+//     const windowHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+
+//     if (rect.top >= 0 && rect.bottom <= windowHeight) {
+//         inViewCallback();
+//     } else {
+//         outOfViewCallback();
+//     }
+// }
 function checkIfFullyInView(content, inViewCallback, outOfViewCallback) {
     if (content.length === 0) {
         console.log("Content not found");
         return;
     }
 
-    const rect = content[0].getBoundingClientRect();
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    inViewCallback();
+                } else {
+                    outOfViewCallback();
+                }
+            });
+        },
+        {
+            threshold: 1.0,
+            rootMargin: "0px",
+        }
+    );
 
-    const windowHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-
-    if (rect.top >= 0 && rect.bottom <= windowHeight) {
-        inViewCallback();
-    } else {
-        outOfViewCallback();
-    }
+    observer.observe(content[0]);
+    return () => observer.disconnect();
 }
 
 // CHECK IF IN VIEW ============================
 // var ratioInView = 1 / 2; 1/2 of the section is in view
+// function checkIfInView(inViewRatio, content, inViewCallback, outOfViewCallback) {
+//     if (content.length === 0) {
+//         console.log("Content not found");
+//         return;
+//     }
+
+//     var rect = content[0].getBoundingClientRect();
+//     var windowHeight = $(window).height();
+//     var sectionHeight = rect.height;
+//     var inViewSectionHeight = sectionHeight * inViewRatio;
+
+//     if (rect.top + inViewSectionHeight <= windowHeight && rect.top + sectionHeight > 0) {
+//         inViewCallback();
+//     } else {
+//         outOfViewCallback();
+//     }
+// }
+
+// Example usage
+// const cleanup = checkIfInView(0.5, $element,
+//     () => console.log('Element is 50% visible'),
+//     () => console.log('Element is not 50% visible')
+// );
+
+// When done with the element
+// cleanup();
 function checkIfInView(inViewRatio, content, inViewCallback, outOfViewCallback) {
     if (content.length === 0) {
         console.log("Content not found");
         return;
     }
 
-    var rect = content[0].getBoundingClientRect();
-    var windowHeight = $(window).height();
-    var sectionHeight = rect.height;
-    var inViewSectionHeight = sectionHeight * inViewRatio;
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    inViewCallback();
+                } else {
+                    outOfViewCallback();
+                }
+            });
+        },
+        {
+            threshold: inViewRatio,
+            rootMargin: "0px",
+        }
+    );
 
-    if (rect.top + inViewSectionHeight <= windowHeight && rect.top + sectionHeight > 0) {
-        inViewCallback();
-    } else {
-        outOfViewCallback();
-    }
+    observer.observe(content[0]);
+    return () => observer.disconnect();
 }
 
 // CHECK IF SCROLL PAST ============================
 // var offset = 100;
 // var headerOffset = $header.outerHeight();
+// function checkIfScrolledPast(content, offSet = 0, scrollPastCallback = () => {}, notScrolledPastCallback = () => {}) {
+//     if (content.length === 0) {
+//         console.log("Content not found");
+//         return;
+//     }
+
+//     var sectionTop = content.offset().top;
+//     var scrollPosition = $(window).scrollTop();
+
+//     if (scrollPosition > sectionTop + content.outerHeight() - offSet) {
+//         scrollPastCallback();
+//     } else {
+//         notScrolledPastCallback();
+//     }
+// }
+
 function checkIfScrolledPast(content, offSet = 0, scrollPastCallback = () => {}, notScrolledPastCallback = () => {}) {
     if (content.length === 0) {
         console.log("Content not found");
         return;
     }
 
-    var sectionTop = content.offset().top;
-    var scrollPosition = $(window).scrollTop();
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    const rect = entry.boundingClientRect;
+                    if (rect.top < 0) {
+                        scrollPastCallback();
+                    } else {
+                        notScrolledPastCallback();
+                    }
+                } else {
+                    notScrolledPastCallback();
+                }
+            });
+        },
+        {
+            threshold: 0,
+            rootMargin: `${offSet}px 0px 0px 0px`,
+        }
+    );
 
-    if (scrollPosition > sectionTop + content.outerHeight() - offSet) {
-        scrollPastCallback();
-    } else {
-        notScrolledPastCallback();
-    }
+    observer.observe(content[0]);
+    return () => observer.disconnect();
 }
 
 // SCROLL TO TOP============================

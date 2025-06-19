@@ -872,6 +872,31 @@ html.no-touchevents *:is(.button, .wp-element-button, .wp-block-button__link):ho
     --button-hover-color: var(--color-green1);
 }
 
+.underline-hover {
+    --hover-rgb: var(--color-black-rgb);
+    --rgb: var(--color-black-rgb);
+    display: inline-block;
+    position: relative;
+}
+
+.underline-hover::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0.1rem;
+    background-color: rgba(var(--rgb), 1);
+    transition: var(--duration) var(--timing-function);
+}
+
+html.no-touchevents .underline-hover:hover {
+    color: rgba(var(--hover-rgb), 1);
+}
+html.no-touchevents .underline-hover:hover::before {
+    width: 100%;
+}
+
 /* GENERAL ====================*/
 .ic,
 .ic-name {
@@ -2463,12 +2488,10 @@ section {
 }
 
 .block-ttl > * {
-    color: var(--color-white);
     transition: var(--duration) var(--timing-function);
 }
 
 .block-desc > * {
-    color: var(--color-white);
     transition: var(--duration) var(--timing-function);
 }
 
@@ -2558,14 +2581,14 @@ section {
 
 .card-container[data-card-layout="grid"] {
     display: grid;
-    grid-gap: var(--gap-x) var(--gap-y);
-    grid-template-columns: repeat(var(--column), calc((100% - (var(--gap-y) * (var(--column) - 1))) / var(--column)));
+    grid-gap: var(--gap-y) var(--gap-x);
+    grid-template-columns: repeat(var(--column), calc((100% - (var(--gap-x) * (var(--column) - 1))) / var(--column)));
     grid-auto-flow: dense;
 }
 
 .card-container[data-card-layout="grid-minmax"] {
     display: grid;
-    grid-gap: var(--gap-x) var(--gap-y);
+    grid-gap: var(--gap-y) var(--gap-x);
     grid-template-columns: repeat(auto-fill, minmax(var(--minmax), 1fr));
     grid-auto-flow: dense;
 }
@@ -2573,26 +2596,26 @@ section {
 .card-container[data-card-layout="flex"] {
     display: flex;
     flex-wrap: wrap;
-    grid-gap: var(--gap-x) var(--gap-y);
+    grid-gap: var(--gap-y) var(--gap-x);
 }
 .card-container[data-card-layout="flex"] > .card {
-    width: calc((100% - (var(--gap-y) * (var(--column) - 1))) / var(--column));
+    width: calc((100% - (var(--gap-x) * (var(--column) - 1))) / var(--column));
 }
 
 .card-container[data-card-layout="slider"] {
-    margin-left: calc((var(--gap-y) * -1) / 2);
-    margin-right: calc((var(--gap-y) * -1) / 2);
+    margin-left: calc((var(--gap-x) * -1) / 2);
+    margin-right: calc((var(--gap-x) * -1) / 2);
 }
 .card-container[data-card-layout="slider"] .swiper-slide {
     width: calc(100% / var(--column)) !important;
-    padding-left: calc(var(--gap-y) / 2);
-    padding-right: calc(var(--gap-y) / 2);
+    padding-left: calc(var(--gap-x) / 2);
+    padding-right: calc(var(--gap-x) / 2);
 }
 .card-container[data-card-layout="slider"] .swiper-button-prev {
     transform: translateX(calc((var(--gap-y)) / 2));
 }
 .card-container[data-card-layout="slider"] .swiper-button-next {
-    transform: translateX(calc((var(--gap-y) * -1) / 2));
+    transform: translateX(calc((var(--gap-x) * -1) / 2));
 }
 
 .card .card-image {
@@ -2627,6 +2650,70 @@ section {
 }
 .marquee {
     display: inline-flex !important;
+}
+
+/* Popup */
+.popup {
+    width: fit-content;
+    position: relative;
+    z-index: 90;
+    --top-offset: var(--spacing-2xs);
+}
+
+.popup-content {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: calc(100% + var(--top-offset));
+    width: fit-content;
+    box-shadow: 0px 0px 10px 0px rgba(var(--color-black-rgb), 0.25);
+    transition: var(--duration) var(--timing-function);
+}
+
+.popup-content.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-content-inner {
+    padding: var(--spacing-2sm) var(--spacing-xs);
+    background-color: var(--color-white);
+}
+
+.popup[data-popup-pc-location="start"] .popup-content {
+    left: 0;
+}
+
+.popup[data-popup-pc-location="center"] .popup-content {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.popup[data-popup-pc-location="end"] .popup-content {
+    right: 0;
+}
+
+/* Map */
+.map-wrapper {
+    position: relative;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.map-wrapper .map {
+    width: 100%;
+    aspect-ratio: 5;
+}
+
+.map-wrapper .pin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 3.6rem;
+    aspect-ratio: 1;
 }
 
 /* COMPONENT */
