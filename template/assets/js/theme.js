@@ -901,7 +901,7 @@ jQuery(function ($) {
 jQuery(document).ready(function ($) {
     function showTab(elem) {
         var $tabContainer = $(elem).closest(".tab-container");
-        $tabContainer.find(".tab-content").removeClass("active");
+        $tabContainer.find("> .tab-contents > .tab-content").removeClass("active");
         $tabContainer.find(elem).addClass("active");
 
         if ($tabContainer.hasClass("scrolltop")) {
