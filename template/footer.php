@@ -42,6 +42,8 @@ if ($page_index) {
 <script src="<?php echo $root; ?>assets/js/theme.js?v=<?php echo time(); ?>"></script>
 <script src="<?php echo $root; ?>assets/js/theme-wp.js?v=<?php echo time(); ?>"></script>
 <script src="<?php echo $root; ?>assets/js/util.js?v=<?php echo time(); ?>"></script>
+<script src="<?php echo $root; ?>assets/js/script.js?v=<?php echo time(); ?>"></script>
+
 
 </body>
 
