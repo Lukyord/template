@@ -3,24 +3,12 @@
     --color-black-rgb: 0, 0, 0;
     --color-filter-black: brightness(0);
 
-    --color-body-black: #282828;
-    --color-body-black-rgb: 40, 40, 40;
-    --color-filter-black: brightness(0) saturate(100%) invert(12%) sepia(2%) saturate(10%) hue-rotate(14deg)
-        brightness(98%) contrast(89%);
+    --color-body-black: var(--color-black);
+    --color-body-black-rgb: var(--color-black-rgb);
 
     --color-white: #ffffff;
     --color-white-rgb: 255, 255, 255;
     --color-filter-white: brightness(0) invert(1);
-
-    --color-gray: #333132;
-    --color-gray-rgb: 51, 49, 50;
-    --color-filter-gray: brightness(0) saturate(100%) invert(18%) sepia(0%) saturate(1209%) hue-rotate(354deg)
-        brightness(87%) contrast(89%);
-
-    --color-gray-light: #efefef;
-    --color-red-rgb: 255, 0, 0;
-    --color-filter-gray-light: brightness(0) saturate(100%) invert(99%) sepia(91%) saturate(35%) hue-rotate(194deg)
-        brightness(112%) contrast(87%);
 
     --color-red: #ff0000;
     --color-red-rgb: 255, 0, 0;
@@ -141,58 +129,6 @@
 }
 
 /* SITE ==================== */
-/* BLURRED IMAGE */
-.blurred-media {
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    filter: blur(1rem);
-}
-
-.blurred-media.white-pulse::before {
-    background-color: var(--color-white);
-}
-
-.blurred-media::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    animation: pulse 1.5s infinite;
-    background-color: var(--color-gray-dark);
-}
-
-@keyframes pulse {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 0.1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-.blurred-media.loaded {
-    position: unset;
-    filter: none;
-}
-
-.blurred-media.loaded::before {
-    animation: none;
-    content: none;
-}
-
-.blurred-media *:is(img, video) {
-    opacity: 0;
-    transition: opacity 250ms ease-in-out;
-}
-
-.blurred-media.loaded *:is(img, video) {
-    opacity: 1;
-}
-
 /* GENERAL */
 .no-scroll {
     height: 100% !important;
@@ -210,11 +146,6 @@
     --rgb-couple: var(--color-black-rgb);
     --filter: var(--filter-white);
 }
-.c-gray {
-    color: var(--color-gray) !important;
-    --rgb: var(--color-gray-rgb);
-    --rgb-couple: var(--color-white-rgb);
-}
 .c-theme {
     color: var(--color-theme) !important;
     --rgb: var(--color-theme-rgb);
@@ -226,9 +157,6 @@
 }
 .bg-white {
     background-color: var(--color-white) !important;
-}
-.bg-gray {
-    background-color: var(--color-gray) !important;
 }
 .bg-theme {
     background-color: var(--color-theme) !important;
@@ -690,7 +618,7 @@ strong {
 }
 
 .font-body {
-    font-size: var(--font-body) !important;
+    font-family: var(--font-body) !important;
 }
 .font-heading {
     font-family: var(--font-heading) !important;
@@ -1096,7 +1024,7 @@ html.no-touchevents .lang ul > li > a:not(.active):hover {
     font-style: normal;
     font-size: var(--font-size-body-sm);
     line-height: var(--line-height-body);
-    color: var(--color-gray);
+    color: var(--color-body-black);
 }
 
 .entry-content > *,
@@ -1276,7 +1204,6 @@ input[type="checkbox"]:checked::before {
 }
 
 .input-file .file-upload-button {
-    background-color: var(--color-gray-light);
     padding: var(--spacing-xs) var(--spacing-xs);
     font-size: var(--font-size-body);
     line-height: var(--line-height-body);
@@ -1304,7 +1231,6 @@ input[type="checkbox"]:checked::before {
     aspect-ratio: 1;
     font-size: var(--font-size-description);
     line-height: 1;
-    background-color: var(--color-gray);
     border-radius: 50%;
     overflow: hidden;
     display: flex;
@@ -1868,7 +1794,7 @@ input[type="checkbox"]:checked::before {
     font-weight: var(--font-weight-regular) !important;
     font-style: normal !important;
     text-transform: none !important;
-    color: var(--color-gray) !important;
+    color: rgba(var(--color-body-black-rgb), 0.5) !important;
     opacity: 1 !important;
 }
 .input ::-webkit-input-placeholder {
@@ -1876,7 +1802,7 @@ input[type="checkbox"]:checked::before {
     font-weight: var(--font-weight-regular) !important;
     font-style: normal !important;
     text-transform: none !important;
-    color: var(--color-gray) !important;
+    color: rgba(var(--color-body-black-rgb), 0.5) !important;
     opacity: 1 !important;
 }
 .input ::-moz-placeholder {
@@ -1884,7 +1810,7 @@ input[type="checkbox"]:checked::before {
     font-weight: var(--font-weight-regular) !important;
     font-style: normal !important;
     text-transform: none !important;
-    color: var(--color-gray) !important;
+    color: rgba(var(--color-body-black-rgb), 0.5) !important;
     opacity: 1 !important;
 }
 .input ::-ms-clear {
@@ -2452,7 +2378,6 @@ section {
     padding-top: var(--gap-section);
     padding-bottom: var(--gap-section);
 }
-
 .sc-inner.pc-t-header {
     padding-top: var(--header-height);
 }

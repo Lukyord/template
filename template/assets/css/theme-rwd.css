@@ -44,13 +44,13 @@
     }
 
     :root {
-        --font-size-h1: var(--80px);
-        --font-size-h2: var(--36px);
-        --font-size-h3: var(--22px);
-        --font-size-h4: var(--18px);
-        --font-size-body: var(--20px);
-        --font-size-description: var(--20px);
-        --font-size-button: var(--14px);
+        --font-size-h1: 8rem;
+        --font-size-h2: 3.6rem;
+        --font-size-h3: 2.2rem;
+        --font-size-h4: 1.8rem;
+        --font-size-body: 2rem;
+        --font-size-description: 2rem;
+        --font-size-button: 1.4rem;
     }
 }
 
