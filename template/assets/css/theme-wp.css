@@ -136,44 +136,14 @@
     transition: var(--duration) var(--timing-function) !important;
     cursor: pointer !important;
 }
-.cky-notice-btn-wrapper .cky-btn:after {
-    font-family: "iconfont";
-    content: "\e94c";
-    font-weight: bold;
-}
-.cky-notice-btn-wrapper .cky-btn:hover {
-    color: var(--color-blue) !important;
-    background: var(--color-white) !important;
-    border-color: var(--color-white) !important;
-    opacity: 1 !important;
-}
 .cky-notice-btn-wrapper .cky-btn-accept {
     order: 0 !important;
-    flex: auto !important;
-    min-width: calc(50% - var(--spacing-2xs) / 2) !important;
 }
 .cky-notice-btn-wrapper .cky-btn-reject {
     order: 1 !important;
-    flex: auto !important;
-    min-width: calc(50% - var(--spacing-2xs) / 2) !important;
 }
 .cky-notice-btn-wrapper .cky-btn-customize {
     order: 2 !important;
-    flex: unset !important;
-    height: auto !important;
-    padding: 0 !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    background: none !important;
-    color: inherit !important;
-}
-.cky-notice-btn-wrapper .cky-btn-customize:hover {
-    border: 0 !important;
-    background: none !important;
-    color: var(--color-link-hover) !important;
-}
-.cky-notice-btn-wrapper .cky-btn-customize:after {
-    content: "";
 }
 @media (min-width: 576px) {
     .cky-consent-container {
