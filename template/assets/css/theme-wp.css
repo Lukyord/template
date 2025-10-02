@@ -24,7 +24,7 @@
     box-shadow: none !important;
     border-radius: 15px !important;
     border: 0 !important;
-    background: var(--color-blue) !important;
+    background: var(--color-black) !important;
     color: var(--color-white) !important;
     font-family: var(--font-body) !important;
     font-weight: var(--font-weight-body) !important;
@@ -36,7 +36,7 @@
 .cky-consent-container .cky-consent-bar .cky-notice {
     display: grid;
     grid-template-columns: 100%;
-    grid-gap: var(--spacing-sm2);
+    grid-gap: var(--spacing-2sm);
 }
 .cky-notice .cky-title,
 .cky-notice-group,

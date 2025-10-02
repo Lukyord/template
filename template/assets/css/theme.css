@@ -1126,7 +1126,6 @@ html.no-touchevents .lang ul > li > a:not(.active):hover {
     width: 100%;
     height: var(--input-height);
     padding: var(--input-spacing-y) var(--input-spacing-x);
-    opacity: 0.5;
 }
 
 textarea {
