@@ -112,7 +112,7 @@
         padding-bottom: calc(var(--gap-section) / 4);
     }
     .sc-inner.mb-b-50 {
-        padding-bottom: calc(var(--gap-section) * 3 / 4);
+        padding-bottom: calc(var(--gap-section) / 2);
     }
     .sc-inner.mb-b-75 {
         padding-bottom: calc(var(--gap-section) * 3 / 4);
