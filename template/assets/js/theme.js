@@ -448,7 +448,7 @@ jQuery(document).ready(function ($) {
             function init() {
                 marqueeWrapper.liMarquee({
                     startShow: true,
-                    scrollDelay: 150,
+                    scrollDelay: 300,
                     scrollStop: false,
                     circular: true,
                     dragAndDrop: notDraggable ? false : true,
@@ -456,7 +456,70 @@ jQuery(document).ready(function ($) {
                 });
             }
 
-            init();
+            // Wait for all images and videos to load before initializing marquee
+            function waitForMediaLoad() {
+                var imagesLoaded = false;
+                var videosLoaded = false;
+
+                // Check if there are any images to load
+                var images = _this.find("img");
+                if (images.length === 0) {
+                    imagesLoaded = true;
+                } else {
+                    _this
+                        .imagesLoaded()
+                        .progress(function () {
+                            // Images are loading
+                        })
+                        .done(function () {
+                            imagesLoaded = true;
+                            checkAllLoaded();
+                        });
+                }
+
+                // Check if there are any videos to load
+                var videos = _this.find("video");
+                if (videos.length === 0) {
+                    videosLoaded = true;
+                } else {
+                    var loadedVideoCount = 0;
+                    videos.each(function () {
+                        var video = $(this)[0];
+                        video.preload = "metadata";
+                        video.load();
+
+                        video.onloadedmetadata = function () {
+                            loadedVideoCount++;
+                            if (loadedVideoCount === videos.length) {
+                                videosLoaded = true;
+                                checkAllLoaded();
+                            }
+                        };
+
+                        // Fallback in case video fails to load
+                        video.onerror = function () {
+                            loadedVideoCount++;
+                            if (loadedVideoCount === videos.length) {
+                                videosLoaded = true;
+                                checkAllLoaded();
+                            }
+                        };
+                    });
+                }
+
+                function checkAllLoaded() {
+                    if (imagesLoaded && videosLoaded) {
+                        init();
+                    }
+                }
+
+                // If no media to load, initialize immediately
+                if (imagesLoaded && videosLoaded) {
+                    init();
+                }
+            }
+
+            waitForMediaLoad();
         });
     }
 });
@@ -581,7 +644,8 @@ jQuery(document).ready(function ($) {
     setTimeout(function () {
         $formElements.each(function () {
             var $input = $(this);
-            var isFilled = $input.val().length > 0 || $input.is(":-webkit-autofill");
+            var inputValue = $input.val();
+            var isFilled = (inputValue && inputValue.length > 0) || $input.is(":-webkit-autofill");
             $input.closest(".input").toggleClass("filled", isFilled);
         });
     }, 100);
