@@ -1746,7 +1746,13 @@ input[type="checkbox"]:checked::before {
     visibility: hidden;
 }
 
-.input.filled .label.anim.fixed,
+.input.filled .label.anim.fixed {
+    top: 0;
+    padding: 0;
+    transform: translateY(-50%);
+    font-size: var(--font-size-body-sub);
+    opacity: var(--opacity);
+}
 .input:has(*:-internal-autofill-selected) .label.anim.fixed {
     top: 0;
     padding: 0;
@@ -2542,7 +2548,6 @@ section {
     color: rgba(var(--rgb), 1);
     text-align: var(--text-align);
     white-space: normal;
-    cursor: default;
 }
 
 .card-container {

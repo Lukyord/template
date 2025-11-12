@@ -4,7 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function detectTouchEvents() {
         const isTouchSupported =
-            "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+            "ontouchstart" in window ||
+            navigator.maxTouchPoints > 0 ||
+            navigator.msMaxTouchPoints > 0;
 
         if (isTouchSupported) {
             html.classList.add("touchevents");
@@ -16,7 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function detectDevices() {
-        const isDevice = /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/.test(navigator.userAgent);
+        const isDevice =
+            /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/.test(
+                navigator.userAgent
+            );
         if (isDevice) {
             html.classList.add("is-device");
         } else {
@@ -54,7 +59,11 @@ jQuery(document).ready(function ($) {
         const currentScrollY = window.scrollY;
         const scrollDifference = previousScrollY - currentScrollY;
         if (currentScrollY <= 0) {
-            html.classList.remove("page-scrolling", "page-scrolling--up", "page-scrolling--down");
+            html.classList.remove(
+                "page-scrolling",
+                "page-scrolling--up",
+                "page-scrolling--down"
+            );
         } else {
             html.classList.add("page-scrolling");
             if (scrollDifference > 0) {
@@ -125,7 +134,8 @@ jQuery(function ($) {
             if (media.length) {
                 function loaded() {
                     blurredImageDiv.addClass("loaded");
-                    var insideAnimation = blurredImageDiv.find(".inside-animation");
+                    var insideAnimation =
+                        blurredImageDiv.find(".inside-animation");
 
                     if (insideAnimation.length) {
                         var animation = insideAnimation.data("animation");
@@ -149,7 +159,9 @@ jQuery(function ($) {
                     }
                 });
             } else {
-                console.log("No img or video element found inside .blurred-image");
+                console.log(
+                    "No img or video element found inside .blurred-image"
+                );
             }
         });
     }
@@ -179,7 +191,9 @@ jQuery(document).ready(function ($) {
     // Smooth scroll on click with offset
     $(document).on("click", ".link-scroll", function (event) {
         const targetId = this.hash;
-        const target = targetId ? $(targetId) : $("[name=" + targetId.slice(1) + "]");
+        const target = targetId
+            ? $(targetId)
+            : $("[name=" + targetId.slice(1) + "]");
 
         // Check if .link-scroll has .top0 class
         const headerHeight = $(this).hasClass("top0") ? 0 : defaultHeaderHeight;
@@ -204,7 +218,10 @@ jQuery(document).ready(function ($) {
             const vdoSrc = element.dataset.vdoSrc;
             const vdoSrcset = element.dataset.vdoSrcset || "";
             const viewportWidth = window.innerWidth;
-            element.setAttribute("src", viewportWidth < 992 && vdoSrcset ? vdoSrcset : vdoSrc);
+            element.setAttribute(
+                "src",
+                viewportWidth < 992 && vdoSrcset ? vdoSrcset : vdoSrc
+            );
         }
 
         function initializeVideos() {
@@ -242,7 +259,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /*::* ANIMATION *::*/
 jQuery(document).ready(function ($) {
-    $('.entry-fadeIn > *:not([class*="wp-block-"], ul, ol)').addClass("animate fadeIn");
+    $('.entry-fadeIn > *:not([class*="wp-block-"], ul, ol)').addClass(
+        "animate fadeIn"
+    );
     $(
         '.entry-fadeIn *:is([class*="wp-block-"]:not(.wp-block-heading)) > *:not([class*="wp-block-"], ul, ol), .entry-fadeIn *:is(li, .wp-block-heading, .wp-block-quote)'
     ).addClass("animate fadeIn");
@@ -255,7 +274,11 @@ jQuery(document).ready(function ($) {
     var isWowInitialized = false;
 
     function pageAnimate() {
-        if (!isWowInitialized && $(".animate").length && typeof WOW === "function") {
+        if (
+            !isWowInitialized &&
+            $(".animate").length &&
+            typeof WOW === "function"
+        ) {
             var wow = new WOW({ boxClass: "animate" });
             wow.init();
             isWowInitialized = true;
@@ -543,12 +566,15 @@ jQuery(document).ready(function ($) {
             .find(".word")
             .each(function () {
                 const highlight = $("[data-split]").data("highlight");
-                const highlightClass = $("[data-split]").data("highlight-class");
+                const highlightClass =
+                    $("[data-split]").data("highlight-class");
                 const word = $(this).data("word");
 
                 if (highlight == word) {
                     $(this).addClass("overflow-visible");
-                    $(this).append(`<div class="${highlightClass}" data-wow-delay="0.5s"></div>`);
+                    $(this).append(
+                        `<div class="${highlightClass}" data-wow-delay="0.5s"></div>`
+                    );
                 }
             });
     }
@@ -645,7 +671,9 @@ jQuery(document).ready(function ($) {
         $formElements.each(function () {
             var $input = $(this);
             var inputValue = $input.val();
-            var isFilled = (inputValue && inputValue.length > 0) || $input.is(":-webkit-autofill");
+            var isFilled =
+                (inputValue && inputValue.length > 0) ||
+                $input.is(":-webkit-autofill");
             $input.closest(".input").toggleClass("filled", isFilled);
         });
     }, 100);
@@ -715,8 +743,15 @@ jQuery(document).ready(function ($) {
         $this.addClass("select2-parent");
 
         // Handle device-specific cases
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            $select.select2("destroy").closest(".select").removeClass("select2-parent");
+        if (
+            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+                navigator.userAgent
+            )
+        ) {
+            $select
+                .select2("destroy")
+                .closest(".select")
+                .removeClass("select2-parent");
         }
 
         $this.find("select").click(function () {
@@ -728,7 +763,10 @@ jQuery(document).ready(function ($) {
 
     // Datepicker initialization
     if (!$("html").hasClass("is-device")) {
-        $(".date-device").attr("type", "text").addClass("date").removeClass("date-device");
+        $(".date-device")
+            .attr("type", "text")
+            .addClass("date")
+            .removeClass("date-device");
     }
     if ($(".date-device").length) {
         $(".date-device").closest(".datepicker").addClass("datepicker-device");
@@ -762,11 +800,14 @@ jQuery(document).ready(function ($) {
             var $this = $(this),
                 $parent = $this.closest(".custom-file-upload"),
                 placeholder = $parent.data("placeholder") || "",
-                buttonText = $parent.data("button") || '<i class="ic ic-upload"></i>',
+                buttonText =
+                    $parent.data("button") || '<i class="ic ic-upload"></i>',
                 $file = $this.addClass("custom-file-upload-hidden"),
                 $wrap = $('<div class="file-upload-wrapper">'),
                 $input = $(
-                    '<input type="text" class="file-upload-input" placeholder="' + placeholder + '" readonly />'
+                    '<input type="text" class="file-upload-input" placeholder="' +
+                        placeholder +
+                        '" readonly />'
                 ),
                 $button = $(
                     '<div class="file-upload-action"><button type="button" class="file-upload-button">' +
@@ -775,7 +816,9 @@ jQuery(document).ready(function ($) {
                 ),
                 $placeholder = $(
                     '<div class="file-upload-placeholder"><div class="header"><p class="title">' +
-                        $(this).closest(".custom-file-upload").data("placeholder") +
+                        $(this)
+                            .closest(".custom-file-upload")
+                            .data("placeholder") +
                         '</p><span class="file-size size-description c-mid-gray"> </span><button type="button" class="cancel-upload" style="display: none;">✖</button></div><progress class="file-progress" value="0" max="100" style="display: none;"></progress></div>'
                 ),
                 $label = $(
@@ -807,7 +850,11 @@ jQuery(document).ready(function ($) {
                 var k = 1024,
                     sizes = ["Bytes", "KB", "MB", "GB"],
                     i = Math.floor(Math.log(bytes) / Math.log(k));
-                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+                return (
+                    parseFloat((bytes / Math.pow(k, i)).toFixed(2)) +
+                    " " +
+                    sizes[i]
+                );
             }
 
             $file.change(function () {
@@ -829,7 +876,10 @@ jQuery(document).ready(function ($) {
                     fileSizeText = fileArr.length + " files";
                 } else {
                     filename = $file.val().split("\\").pop();
-                    fileSizeText = fileArr.length > 0 ? formatFileSize(fileArr[0].size) : "";
+                    fileSizeText =
+                        fileArr.length > 0
+                            ? formatFileSize(fileArr[0].size)
+                            : "";
                 }
 
                 $input.val(filename).attr("title", filename).focus();
@@ -944,7 +994,11 @@ jQuery(function ($) {
                     setTimeout(function () {
                         var scrollTop = $thisParent.offset().top - windowHeight;
 
-                        $("html, body").animate({ scrollTop: scrollTop }, 800, "linear");
+                        $("html, body").animate(
+                            { scrollTop: scrollTop },
+                            800,
+                            "linear"
+                        );
                     }, 810);
                 } else {
                     $thisParent.toggleClass("active");
@@ -965,19 +1019,32 @@ jQuery(function ($) {
 jQuery(document).ready(function ($) {
     function showTab(elem) {
         var $tabContainer = $(elem).closest(".tab-container");
-        $tabContainer.find("> .tab-contents > .tab-content").removeClass("active");
+        $tabContainer
+            .find("> .tab-contents > .tab-content")
+            .removeClass("active");
         $tabContainer.find(elem).addClass("active");
 
         if ($tabContainer.hasClass("scrolltop")) {
             setTimeout(function () {
-                var scrollTop = $tabContainer.offset().top - $("#header-height").outerHeight() + 1;
-                $("html, body").animate({ scrollTop: scrollTop }, 800, "easeOutExpo");
+                var scrollTop =
+                    $tabContainer.offset().top -
+                    $("#header-height").outerHeight() +
+                    1;
+                $("html, body").animate(
+                    { scrollTop: scrollTop },
+                    800,
+                    "easeOutExpo"
+                );
             }, 250);
         }
     }
 
     function selectDestroyMobile($obj) {
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        if (
+            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+                navigator.userAgent
+            )
+        ) {
             $obj.select2("destroy");
             $obj.parent(".select").removeClass("select2-parent");
         }
@@ -997,7 +1064,9 @@ jQuery(document).ready(function ($) {
         selectDestroyMobile($mySelect2);
     });
 
-    $('.tab-container .tab a:not([data-redirect]):not([href="javascript:;"])').click(function (e) {
+    $(
+        '.tab-container .tab a:not([data-redirect]):not([href="javascript:;"])'
+    ).click(function (e) {
         e.preventDefault();
 
         var $tabGroupParent = $(this).closest(".tab-container");
@@ -1005,7 +1074,10 @@ jQuery(document).ready(function ($) {
         var $select = $tabGroupParent.find("select.tab-select2");
 
         $tabGroupParent.find(".tab a").removeClass("active");
-        $tabGroupParent.find("select option").prop("selected", false).removeAttr("selected");
+        $tabGroupParent
+            .find("select option")
+            .prop("selected", false)
+            .removeAttr("selected");
         $(this).addClass("active");
         showTab(_id);
         $tabGroupParent
@@ -1015,16 +1087,22 @@ jQuery(document).ready(function ($) {
         $select.select2("destroy").select2({
             width: "100%",
             minimumResultsForSearch: -1,
-            dropdownParent: $tabGroupParent.find("select.tab-select2").parents(".select"),
+            dropdownParent: $tabGroupParent
+                .find("select.tab-select2")
+                .parents(".select"),
         });
         selectDestroyMobile($select);
-        $tabGroupParent.find(".select-value").text($tabGroupParent.find("select option:selected").text());
+        $tabGroupParent
+            .find(".select-value")
+            .text($tabGroupParent.find("select option:selected").text());
     });
 
     function activateTabFromHash() {
         if (window.location.hash) {
             var targetHash = window.location.hash;
-            var $tabLink = $('.tab-container .tab a[href="' + targetHash + '"]');
+            var $tabLink = $(
+                '.tab-container .tab a[href="' + targetHash + '"]'
+            );
             if ($tabLink.length) {
                 $tabLink.click();
             }
@@ -1042,7 +1120,9 @@ jQuery(document).ready(function ($) {
         var $tabContainer = $(this).closest(".tab-container");
         var selectedValue = $(this).val();
         $tabContainer.find(".tab a").removeClass("active");
-        $tabContainer.find('.tab a[href="' + selectedValue + '"]').addClass("active");
+        $tabContainer
+            .find('.tab a[href="' + selectedValue + '"]')
+            .addClass("active");
         showTab(selectedValue);
     });
 });
@@ -1052,7 +1132,9 @@ jQuery(document).ready(function ($) {
     $(".func").each(function () {
         var _this = $(this);
         if (_this.find("> .func-panel").length) {
-            _this.find(".select-value").text(_this.find(".func-menu li.current-cat > a").text());
+            _this
+                .find(".select-value")
+                .text(_this.find(".func-menu li.current-cat > a").text());
 
             _this.find("> .func-ctrl").on("click", function (e) {
                 e.preventDefault();
@@ -1060,31 +1142,51 @@ jQuery(document).ready(function ($) {
                 $(this).parent().siblings().removeClass("enabled");
                 $(this).parent().toggleClass("enabled");
 
-                $(this).parent().siblings().find(".func-panel").fadeOut(100).removeClass("active");
-                $(this).parent().find(".func-panel").fadeToggle(100).addClass("active");
+                $(this)
+                    .parent()
+                    .siblings()
+                    .find(".func-panel")
+                    .fadeOut(100)
+                    .removeClass("active");
+                $(this)
+                    .parent()
+                    .find(".func-panel")
+                    .fadeToggle(100)
+                    .addClass("active");
             });
             $(".func-panel").click(function (e) {
                 e.stopPropagation();
             });
-            $("body, .func-panel-close, .func-panel-overlay, .func-panel-ctrl *").click(function () {
+            $(
+                "body, .func-panel-close, .func-panel-overlay, .func-panel-ctrl *"
+            ).click(function () {
                 $(".func").removeClass("enabled");
                 $(".func-panel").fadeOut(100).removeClass("active");
             });
         } else if (_this.find("select").length) {
             setTimeout(function () {
-                _this.find("select option:contains('Sort by')").html(function (_, html) {
-                    return html.replace(/(Sort by)/g, "");
-                });
+                _this
+                    .find("select option:contains('Sort by')")
+                    .html(function (_, html) {
+                        return html.replace(/(Sort by)/g, "");
+                    });
 
                 var ele = _this;
-                ele.find(".select-value").text(ele.find("form select option:selected", this).text());
+                ele.find(".select-value").text(
+                    ele.find("form select option:selected", this).text()
+                );
                 $(".select-value:contains('Sort by')").html(function (_, html) {
                     return html.replace(/(Sort by)/g, "<span>$1 : </span>");
                 });
 
                 ele.find("select").on("load change", function () {
-                    ele.find(".select-value").text(ele.find("form select option:selected", this).text());
-                    $(".select-value:contains('Sort by')").html(function (_, html) {
+                    ele.find(".select-value").text(
+                        ele.find("form select option:selected", this).text()
+                    );
+                    $(".select-value:contains('Sort by')").html(function (
+                        _,
+                        html
+                    ) {
                         return html.replace(/(Sort by)/g, "<span>$1 : </span>");
                     });
                 });
@@ -1106,7 +1208,9 @@ jQuery(document).ready(function ($) {
             const slideTotal = $this.find(".swiper-slide").length;
 
             const slidePagination = $this.find(".swiper-pagination")[0];
-            const slidePaginationCustom = $this.find(".swiper-pagination").hasClass("custom");
+            const slidePaginationCustom = $this
+                .find(".swiper-pagination")
+                .hasClass("custom");
             const slideButtonNext = $this.find(".swiper-button-next")[0];
             const slideButtonPrev = $this.find(".swiper-button-prev")[0];
 
@@ -1123,7 +1227,8 @@ jQuery(document).ready(function ($) {
                     el: slidePagination,
                     type: slidePaginationCustom ? "custom" : "bullets",
                     clickable: !slidePaginationCustom,
-                    renderCustom: (swiper, current, total) => `<span class="current">${current}</span> / ${total}`,
+                    renderCustom: (swiper, current, total) =>
+                        `<span class="current">${current}</span> / ${total}`,
                 },
                 navigation: {
                     nextEl: slideButtonNext,
@@ -1139,7 +1244,9 @@ jQuery(document).ready(function ($) {
                 },
                 on: {
                     init: function () {
-                        const activeVideos = $this.find(".swiper-slide-active video[autoplay]");
+                        const activeVideos = $this.find(
+                            ".swiper-slide-active video[autoplay]"
+                        );
                         activeVideos.each(function () {
                             this.play();
                             this.currentTime = 0;
@@ -1147,14 +1254,18 @@ jQuery(document).ready(function ($) {
                     },
                     resize: () => handleResize($this),
                     slideChangeTransitionStart: function () {
-                        const activeVideos = $this.find(".swiper-slide-active video[autoplay]");
+                        const activeVideos = $this.find(
+                            ".swiper-slide-active video[autoplay]"
+                        );
                         activeVideos.each(function () {
                             this.play();
                             this.currentTime = 0;
                         });
                     },
                     slideChangeTransitionEnd: function () {
-                        const inactiveVideos = $this.find('.swiper-slide:not(".swiper-slide-active") video');
+                        const inactiveVideos = $this.find(
+                            '.swiper-slide:not(".swiper-slide-active") video'
+                        );
                         inactiveVideos.each(function () {
                             this.pause();
                             this.currentTime = 0;
@@ -1182,7 +1293,9 @@ jQuery(document).ready(function ($) {
 
                     vdo.onloadedmetadata = function () {
                         const vdoTime = (vdo.duration - 1) * 1000;
-                        $(vdo).closest(".swiper-slide").attr("data-swiper-autoplay", vdoTime);
+                        $(vdo)
+                            .closest(".swiper-slide")
+                            .attr("data-swiper-autoplay", vdoTime);
 
                         loadedCount++;
 
@@ -1221,7 +1334,9 @@ jQuery(document).ready(function ($) {
             const noTouchMove = $this.hasClass("no-touch");
 
             const slidePagination = $this.find(".swiper-pagination")[0];
-            const slidePaginationCustom = $this.find(".swiper-pagination").hasClass("custom");
+            const slidePaginationCustom = $this
+                .find(".swiper-pagination")
+                .hasClass("custom");
             const slideButtonNext =
                 $this.find(".swiper-button-next")[0] ||
                 $this.parent().find(".swiper-button-child-next")[0] ||
@@ -1310,17 +1425,23 @@ jQuery(document).ready(function ($) {
                 loaded: (fancybox) => {
                     const nav = document.querySelector(".fancybox__nav");
                     if (nav) {
-                        const slides = document.querySelectorAll(".fancybox__slide");
+                        const slides =
+                            document.querySelectorAll(".fancybox__slide");
                         slides.forEach((slide) => {
                             // Caption
-                            const caption = slide.querySelector(".fancybox__caption");
+                            const caption =
+                                slide.querySelector(".fancybox__caption");
                             if (caption) {
-                                const existingNav = slide.querySelector(".fancybox__nav");
+                                const existingNav =
+                                    slide.querySelector(".fancybox__nav");
                                 if (!existingNav) {
                                     const navClone = nav.cloneNode(true);
 
-                                    const footer = document.createElement("div");
-                                    footer.classList.add("fancybox__content__footer");
+                                    const footer =
+                                        document.createElement("div");
+                                    footer.classList.add(
+                                        "fancybox__content__footer"
+                                    );
 
                                     footer.appendChild(caption);
                                     footer.appendChild(navClone);
@@ -1329,7 +1450,9 @@ jQuery(document).ready(function ($) {
                                 }
                             }
 
-                            const closeButton = slide.querySelector(".f-button.is-close-btn");
+                            const closeButton = slide.querySelector(
+                                ".f-button.is-close-btn"
+                            );
 
                             if (closeButton) {
                                 closeButton.parentNode.removeChild(closeButton);
@@ -1402,7 +1525,10 @@ jQuery(document).ready(function () {
             const ratioInView = 1 / 10;
 
             function inViewCallback() {
-                if (!$("html").hasClass("overflow-hidden") && !countUp.hasClass("animated")) {
+                if (
+                    !$("html").hasClass("overflow-hidden") &&
+                    !countUp.hasClass("animated")
+                ) {
                     countUp.addClass("in-view animated");
                     startCountAnimation(countUp);
                 }
