@@ -24,6 +24,18 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.ic-chevron-down-sharp:before {
+    content: "\e982";
+}
+.ic-lazada:before {
+    content: "\e980";
+}
+.ic-shopee:before {
+    content: "\e981";
+}
+.ic-chevron-down-condense:before {
+    content: "\e97f";
+}
 .ic-arrow_topright:before {
     content: "\e97a";
 }
@@ -132,7 +144,7 @@
     content: "\e95c";
 }
 .ic-grid-3x3:before {
-    content: "\e959";
+    content: "\e97e";
 }
 .ic-grid-4x4:before {
     content: "\e95a";

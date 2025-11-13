@@ -773,8 +773,6 @@ html.no-touchevents a:hover {
 }
 
 *:is(.button, .wp-element-button, .wp-block-button__link) {
-    --gap-y: 0;
-    --gap-x: 0;
     --button-border: var(--border-width) var(--border-style) var(--button-bg);
     --button-hover-border: var(--button-border);
     --button-bg: var(--color-green5);
@@ -789,7 +787,7 @@ html.no-touchevents a:hover {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    grid-gap: var(--gap-y) var(--gap-x);
+    grid-gap: var(--spacing-3xs);
     vertical-align: top;
     white-space: normal;
     width: -webkit-fit-content;
@@ -799,7 +797,7 @@ html.no-touchevents a:hover {
     height: auto;
     min-height: 0;
     max-height: none;
-    padding: var(--button-spacing-y) var(--button-spacing-x) !important;
+    padding: var(--spacing-sm) var(--spacing-2sm) !important;
     opacity: 1 !important;
     color: var(--button-color) !important;
     background: var(--button-bg) !important;
@@ -819,7 +817,7 @@ html.no-touchevents *:is(.button, .wp-element-button, .wp-block-button__link):ho
     border-radius: 1.6rem !important;
     color: var(--button-hover-color) !important;
     background-color: var(--button-hover-bg) !important;
-    border: var(--button-hover-border);
+    border: var(--button-hover-border) !important;
 }
 
 *:is(.button, .wp-element-button, .wp-block-button__link).secondary {
