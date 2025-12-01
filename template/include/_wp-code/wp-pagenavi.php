@@ -4,5 +4,6 @@
     <a class="page" href="#">2</a>
     <a class="page" href="#">3</a>
     <a class="page" href="#">4</a>
+    <a class="page" href="#">...</a>
     <a class="nextpostslink" rel="next" href="#">Next</a>
 </div>
